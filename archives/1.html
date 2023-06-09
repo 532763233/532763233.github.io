@@ -1,0 +1,967 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Apifox快速上手 | EraiBlog</title><meta name="author" content="槐序拾肆"><meta name="copyright" content="槐序拾肆"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Apifox快速上手前言其实大家都知道 API 文档先行的重要性，但是在实践过程中往往会遇到很多困难。 程序员最讨厌的两件事：1. 写文档，2. 别人不写文档。大多数开发人员不愿意写 API 文档的原因是写文档短期收益远低于付出的成本，然而并不是所有人都能够坚持做有长期收益的事情的。 作为一个前后端分离模式开发的团队，我们经常会看到这样的场景：前端开发和后端开发在一起热烈的讨论“你这接口参数怎么又">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Apifox快速上手">
+<meta property="og:url" content="https://532763233.github.io/archives/1.html">
+<meta property="og:site_name" content="EraiBlog">
+<meta property="og:description" content="Apifox快速上手前言其实大家都知道 API 文档先行的重要性，但是在实践过程中往往会遇到很多困难。 程序员最讨厌的两件事：1. 写文档，2. 别人不写文档。大多数开发人员不愿意写 API 文档的原因是写文档短期收益远低于付出的成本，然而并不是所有人都能够坚持做有长期收益的事情的。 作为一个前后端分离模式开发的团队，我们经常会看到这样的场景：前端开发和后端开发在一起热烈的讨论“你这接口参数怎么又">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.picgo.net/2023/05/05/image693f3717317fd443.png">
+<meta property="article:published_time" content="2023-05-05T02:24:00.000Z">
+<meta property="article:modified_time" content="2023-05-08T02:21:30.144Z">
+<meta property="article:author" content="槐序拾肆">
+<meta property="article:tag" content="Apifox">
+<meta property="article:tag" content="IDEA Plugin">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.picgo.net/2023/05/05/image693f3717317fd443.png"><link rel="shortcut icon" href="/./img/favicon2.png"><link rel="canonical" href="https://532763233.github.io/archives/1.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="codeva-cnmI7Ekh0H"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":30,"languages":{"author":"作者: 槐序拾肆","link":"链接: ","source":"来源: EraiBlog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Apifox快速上手',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-05-08 10:21:30'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/style.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://img.picgo.net/2023/05/05/image693f3717317fd443.png')"><nav id="nav"><span id="blog-info"><a href="/" title="EraiBlog"><span class="site-name">EraiBlog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Apifox快速上手</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-05T02:24:00.000Z" title="发表于 2023-05-05 10:24:00">2023-05-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-05-08T02:21:30.144Z" title="更新于 2023-05-08 10:21:30">2023-05-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Tools/">Tools</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Tools/Apifox/">Apifox</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">13.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>42分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Apifox快速上手"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Apifox快速上手"><a href="#Apifox快速上手" class="headerlink" title="Apifox快速上手"></a><center>Apifox快速上手</center></h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>其实大家都知道 API 文档先行的重要性，但是在实践过程中往往会遇到很多困难。</p>
+<p>程序员最讨厌的两件事：1. 写文档，2. 别人不写文档。大多数开发人员不愿意写 API 文档的原因是写文档短期收益远低于付出的成本，然而并不是所有人都能够坚持做有长期收益的事情的。</p>
+<p>作为一个前后端分离模式开发的团队，我们经常会看到这样的场景：前端开发和后端开发在一起热烈的讨论“你这接口参数怎么又变了？”，“接口怎么又不通了？”，“稍等，我调试下”，“你再试试…”。</p>
+<p>那能不能写好 API 文档，大家都按文档来开发？很难，因为写文档、维护文档比较麻烦，而且费时，还会经常出现 API 更新了，但文档还是旧的，各种同步不一致的情况，从而耽搁彼此的时间。</p>
+<h4 id="团队原来的工作模式"><a href="#团队原来的工作模式" class="headerlink" title="团队原来的工作模式"></a>团队原来的工作模式</h4><ol>
+<li><strong>API 设计人员</strong>使用 Swagger 写 API 文档</li>
+<li><strong>前端开发</strong> 使用 mock.js mock 假的 API 数据</li>
+<li><strong>后端开发</strong> 使用 Postman 调试 API</li>
+<li><strong>测试人员</strong> 使用 JMeter 测试 API</li>
+</ol>
+<h4 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h4><p>我们团队是前后端同步进入开发的，不能等后端开发完了才出接口文档，前端再进入开发，所以使用后端代码注释自动生成 Swagger 不适合我们。</p>
+<p>写 Swagger 文档效率很低，并且有学习门槛，让团队所有人都熟练手写 Swagger 文档是不现实的，更何况团队不停有新人进来。</p>
+<p>开发人员在 Swagger 定义好文档后，接口调试的时候还需要去 Postman 再定义一遍。</p>
+<p>前端开发 Mock 数据的时候又要去 mock 工具里定义一遍，手动设置好 Mock 规则。</p>
+<p>测试人员需要去 JMeter 定义一遍。</p>
+<p>前端根据 mock 工具出来的数据开发完，后端根据 Swagger 定义的接口文档开发完，各自测试测试通过了，本以为可以马上上线，结果一对接发现各种问题：原来开发过程中接口变更，只修改了 Swagger，但是没有及时同步修改 mock。</p>
+<p>同样，测试在 JMeter 写好的测试用例，真正运行的时候也会发现各种不一致。</p>
+<p>开发过程，经常会有发现开始定义的接口文档有不合理的地方，需要临时调整，经常出现接口改了，但是文档没有更新。</p>
+<p>时间久了，各种不一致会越来越严重。</p>
+<h3 id="如何解决"><a href="#如何解决" class="headerlink" title="如何解决"></a>如何解决</h3><p>要做到写文档和及时维护文档的<code>短期收益</code>就能远高于<code>付出的成本</code>，无非两个方向：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. 降低写文档的成本</span><br><span class="line">2. 增加写文档后的收益</span><br></pre></td></tr></table></figure>
+
+<p>鉴于此，我们设想如果有一款工具做到以下这些是不是就非常爽了？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1.以完全可视化的界面来编写文档，并且是零学习成本，新人 一来就能上手。</span><br><span class="line"></span><br><span class="line">2.可以通过接口文档定义的数据结构自动 mock出数据，而无需 前端开发 再写mock规则，直接开工。</span><br><span class="line"></span><br><span class="line">3.后端开发 在接口文档基础上调试接口，而无需在去Postman上调试；接口如有变化，调试的时候就自动更新了文档，零成本的保障了接口维护的及时性；自动根据文档校验数据结构，无需肉眼校验，无需手动写断言。</span><br><span class="line"></span><br><span class="line">4.后端开发 每次调试完一个功能就保存为一个接口用例。</span><br><span class="line"></span><br><span class="line">5.测试人员 直接使用接口用例测试接口。</span><br><span class="line"></span><br><span class="line">6.测试人员 更加接口文档自动生成测试用例，然后像JMeter一样在直接在上面测试。</span><br><span class="line"></span><br><span class="line">7.根据接口文档定义的数据结构，自动生成前后端的数据模型代码。</span><br></pre></td></tr></table></figure>
+
+<h4 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h4><p>1.<strong>前端</strong>（或<strong>后端</strong>）在 <strong>Apifox</strong> 上定好 <strong>接口文档</strong> 初稿。</p>
+<p>2.<strong>前后端</strong> 一起评审、完善 <strong>接口文档</strong>，定好 <strong>接口用例</strong>。</p>
+<p>3.<strong>前端</strong> 使用 <strong>Apifox</strong> 自动生成的 **Mock 数据 **进入开发，而无需手写 <strong>Mock规则</strong>，直接开工。</p>
+<p>4.<strong>后端</strong> 使用 <strong>接口用例</strong> 调试开发中接口，系统根据接口文档的定义 <strong>自动校验</strong> 返回的数据是否正确，只要所有接口用例调试通过，接口就开发完成了。</p>
+<p>5.<strong>后端</strong> 开发完成后，<strong>测试人员</strong>（也可以是<strong>后端</strong>）使用 <strong>集合测试</strong> 功能进行多接口集成测试，完整测试整个接口调用流程。</p>
+<p>6.<strong>前后端</strong> 都开发完，前端从 <strong>Mock 数据</strong> 切换到 <strong>正式数据</strong>，联调通常都会非常顺利，因为前后端双方都完全遵守了接口定义的规范。</p>
+<h2 id="一-安装运行Apifox"><a href="#一-安装运行Apifox" class="headerlink" title="一.安装运行Apifox"></a>一.安装运行Apifox</h2><h3 id="1-1安装"><a href="#1-1安装" class="headerlink" title="1.1安装"></a>1.1安装</h3><p>双击安装Apifox-2.2.34.exe</p>
+<p><img src="https://img.picgo.net/2023/04/23/1682238562413bfd60203ff6ded24.png"></p>
+<h3 id="1-2扫码注册登录"><a href="#1-2扫码注册登录" class="headerlink" title="1.2扫码注册登录"></a>1.2扫码注册登录</h3><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.picgo.net/image/wblar"><img src="https://img.picgo.net/2023/04/23/image18e42592abb8a3d9.png" alt="image18e42592abb8a3d9.png"></a></p>
+<h3 id="1-3加入团队"><a href="#1-3加入团队" class="headerlink" title="1.3加入团队"></a>1.3加入团队</h3><p>向团队的管理员申请加入团队的链接，点击链接加入团队。</p>
+<h3 id="1-4完成"><a href="#1-4完成" class="headerlink" title="1.4完成"></a>1.4完成</h3><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.picgo.net/image/wb78m"><img src="https://img.picgo.net/2023/04/23/image2ca69e9487442add.png" alt="image2ca69e9487442add.png"></a></p>
+<h2 id="二-IDEA插件安装使用"><a href="#二-IDEA插件安装使用" class="headerlink" title="二.IDEA插件安装使用"></a>二.IDEA插件安装使用</h2><h3 id="2-1-介绍"><a href="#2-1-介绍" class="headerlink" title="2.1 介绍"></a>2.1 介绍</h3><p>Apifox IDEA 插件（Apifox Helper） 主要用于 IDEA 项目快速生成 API 文档，并同步到 Apifox，代码零入侵。</p>
+<ul>
+<li>基于 javadoc（Java）、KDoc（Kotlin）、ScalaDoc（Scala） 解析 API 文档。</li>
+<li>支持 Swagger 注解</li>
+<li>注意：可以在保持代码零侵入的情况下得到相当完整的 API 文档，但是特殊的需求还是需要部分特殊的注释&#x2F;注解配合，<a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/ide-plugin/idea-plugin/advanced-use/annotation-rule/">注释规范说明</a>。</li>
+<li>该插件基于 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/tangcent/easy-api">easy-api</a> 定制开发，感谢 easy-api 作者</li>
+</ul>
+<h3 id="2-2-功能特性"><a href="#2-2-功能特性" class="headerlink" title="2.2 功能特性"></a>2.2 功能特性</h3><ul>
+<li>导出 API 文档到 Apifox</li>
+<li>导出 Markdown 格式 API 文档</li>
+<li>在 IDEA 中直接发起 API 请求</li>
+</ul>
+<h3 id="2-3-安装"><a href="#2-3-安装" class="headerlink" title="2.3 安装"></a>2.3 安装</h3><h4 id="从-IDEA-plugins-中搜索安装"><a href="#从-IDEA-plugins-中搜索安装" class="headerlink" title="从 IDEA plugins 中搜索安装"></a>从 IDEA plugins 中搜索安装</h4><ul>
+<li><p>打开 IDEA &gt; Preferences(Settings) &gt; Plugins ，搜索 Apifox Helper</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/install-2.7643fcb6.png"></p>
+</li>
+</ul>
+<h3 id="2-4-获取项目ID"><a href="#2-4-获取项目ID" class="headerlink" title="2.4 获取项目ID"></a>2.4 获取项目ID</h3><p>打开项目设置——基本设置，复制项目 ID</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/get-project-id-1.f92cf783.png"></p>
+<h3 id="2-5获取访问令牌"><a href="#2-5获取访问令牌" class="headerlink" title="2.5获取访问令牌"></a>2.5获取访问令牌</h3><p>Apifox 个人访问令牌：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.apifox.cn/help/openapi/">获取访问令牌</a></p>
+<h3 id="2-6基础配置"><a href="#2-6基础配置" class="headerlink" title="2.6基础配置"></a>2.6基础配置</h3><p>安装插件后，进入设置界面 Preferences(Settings) &gt; ApifoxHelper</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/quickstart-1.d46d4df1.png"></p>
+<ul>
+<li>填写Apifox 服务器地址: 填写 Apifox API 服务地址，SaaS 版默认为 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://api.apifox.cn/">https://api.apifox.cn</a></li>
+<li>填写Apifox 个人访问令牌：获取可参考文档<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.apifox.cn/help/openapi/">获取访问令牌</a></li>
+<li>填写模块项目 ID 配置: 代码模块名和项目 ID 的映射关系配置，其中项目 ID 的获取可参考文档<a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/ide-plugin/idea-plugin/quickstart/get-project-id/">获取项目 ID</a></li>
+</ul>
+<p><strong>模块项目 ID 配置</strong>:</p>
+<p>每个 Module 都需指定一个项目 ID，可选指定目标目录名。</p>
+<ul>
+<li>如下填写，表示的是 mall-admin 和 mall-search 模块都导入到项目 2051427 且都是导入到根目录。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mall-admin:2051427</span><br><span class="line">mall-search:2051427</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如下填写，表示的是 mall-admin 和 mall-search 模块都导入到项目 2051427，分别导入到 <code>管理后台</code>、<code>搜索</code>目录下。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mall-admin:2051427,管理后台</span><br><span class="line">mall-search:2051427,搜索</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>多级目录用<code>/</code>分割，如下填写，表示的是 mall-admin 和 mall-search 模块都导入到项目 2051427，分别导入到<code>商城/后台管理</code>、<code>商城/商城搜索</code>目录下。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mall-admin:2051427,商城/后台管理</span><br><span class="line">mall-search:2051427,商城/商城搜索</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7同步接口到-Apifox"><a href="#2-7同步接口到-Apifox" class="headerlink" title="2.7同步接口到 Apifox"></a>2.7同步接口到 Apifox</h3><h4 id="同步模块内所有接口"><a href="#同步模块内所有接口" class="headerlink" title="同步模块内所有接口"></a>同步模块内所有接口</h4><ul>
+<li>在模块目录上的<strong>右键菜单</strong>中选择 <code>Upload to Apifox</code></li>
+</ul>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/quickstart-2.60713d3b.png"></p>
+<h4 id="同步-controller-文件内所有接口"><a href="#同步-controller-文件内所有接口" class="headerlink" title="同步 controller 文件内所有接口"></a>同步 controller 文件内所有接口</h4><ul>
+<li>在代码编辑区域的<strong>右键菜单</strong>中选择 <code>Upload to Apifox</code></li>
+</ul>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/quickstart-3.d7e6eb22.png"></p>
+<h4 id="同步选择部分接口"><a href="#同步选择部分接口" class="headerlink" title="同步选择部分接口"></a>同步选择部分接口</h4><ul>
+<li>在模块目录上或代码编辑区域的<strong>右键菜单</strong>中选择 <code>Export API</code></li>
+</ul>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/quickstart-4.8382667e.png"></p>
+<ul>
+<li>选择想要同步的单个或部分接口，回车执行同步请求</li>
+</ul>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/quickstart-5.d31d10b6.png"></p>
+<h2 id="三-Apifox介绍"><a href="#三-Apifox介绍" class="headerlink" title="三.Apifox介绍"></a>三.Apifox介绍</h2><h3 id="3-1-Apifox-定位"><a href="#3-1-Apifox-定位" class="headerlink" title="3.1 Apifox 定位"></a>3.1 Apifox 定位</h3><h4 id="Apifox-x3D-Postman-Swagger-Mock-JMeter"><a href="#Apifox-x3D-Postman-Swagger-Mock-JMeter" class="headerlink" title="Apifox &#x3D; Postman + Swagger + Mock + JMeter"></a>Apifox &#x3D; Postman + Swagger + Mock + JMeter</h4><p><strong>Apifox</strong> 是 <strong>API 文档</strong>、<strong>API 调试</strong>、<strong>API Mock</strong>、<strong>API 自动化测试</strong>一体化协作平台。</p>
+<p>通过一套系统、一份数据，解决多个系统之间的数据同步问题。只要定义好接口文档，接口调试、数据 Mock、接口测试就可以直接使用，无需再次定义；接口文档和接口开发调试使用同一个工具，接口调试完成后即可保证和接口文档定义完全一致。高效、及时、准确！</p>
+<h3 id="3-2-Apifox-宗旨"><a href="#3-2-Apifox-宗旨" class="headerlink" title="3.2 Apifox 宗旨"></a>3.2 Apifox 宗旨</h3><p>节省研发团队的每一分钟！</p>
+<h3 id="3-3-Apifox-功能"><a href="#3-3-Apifox-功能" class="headerlink" title="3.3 Apifox 功能"></a>3.3 Apifox 功能</h3><p><strong>接口设计</strong>：Apifox 接口文档遵循 OpenApi 3.0 (原 Swagger)、JSON Schema 规范的同时，提供了非常好用的可视化文档管理功能，零学习成本，非常高效。并且支持在线分享接口文档。</p>
+<p><strong>数据模型</strong>：可复用的数据结构，定义接口返回数据结构及请求参数数据结构（仅 JSON 和 XML 模式）时可直接引用。支持模型直接嵌套引用，直接 JSON&#x2F;XML 智能导入，支持 oneOf、allOf 等高级组合模式。</p>
+<p><strong>接口调试</strong>：Postman 有的功能，比如环境变量、前置&#x2F;后置脚本、Cookie&#x2F;Session 全局共享 等功能，Apifox 都有，并且比 Postman 更高效好用。接口运行完之后点击保存为用例按钮，即可生成接口用例，后续可直接运行接口用例，无需再输入参数，非常方便。自定义脚本 100% 兼容 Postman 语法，并且支持运行 javascript、java、python、php、js、BeanShell、go、shell、ruby、lua 等各种语言代码。</p>
+<p><strong>接口用例</strong>：通常一个接口会有多种情况用例，比如参数正确用例、参数错误用例、数据为空用例、不同数据状态用例等等。运行接口用例时会自动校验数据正确性，用接口用例来调试接口非常高效。</p>
+<p><strong>接口数据 Mock</strong>：内置 Mock.js 规则引擎，非常方便 mock 出各种数据，并且可以在定义数据结构的同时写好 mock 规则。支持添加“期望”，根据请求参数返回不同 mock 数据。最重要的是 Apifox 零配置 即可 Mock 出非常人性化的数据，具体在本文后面介绍。</p>
+<p><strong>数据库操作</strong>：支持读取数据库数据，作为接口请求参数使用。支持读取数据库数据，用来校验(断言)接口请求是否成功。</p>
+<p><strong>接口自动化测试</strong>：提供接口集合测试，可以通过选择接口（或接口用例）快速创建测试集。目前接口自动化测试更多功能还在开发中，敬请期待！目标是：JMeter 有的功能基本都会有，并且要更好用。</p>
+<p><strong>快捷调试</strong>：类似 Postman 的接口调试方式，主要用途为临时调试一些无需文档化的接口，无需提前定义接口即可快速调试。</p>
+<p><strong>代码生成</strong>：根据接口及数据数据模型定义，系统自动生成接口请求代码、前端业务代码及后端业务代码。</p>
+<p><strong>团队协作</strong>：Apifox 天生就是为团队协作而生的，接口云端实时同步更新，成熟的团队&#x2F;项目&#x2F;成员权限管理，满足各类企业的需求。</p>
+<h2 id="四-Apifox简易使用"><a href="#四-Apifox简易使用" class="headerlink" title="四.Apifox简易使用"></a>四.Apifox简易使用</h2><h3 id="4-1-界面概览"><a href="#4-1-界面概览" class="headerlink" title="4.1 界面概览"></a>4.1 界面概览</h3><h4 id="接口概览页"><a href="#接口概览页" class="headerlink" title="接口概览页"></a>接口概览页</h4><p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/introduce-1.fc95d8cd.png"></p>
+<h4 id="接口设计界面"><a href="#接口设计界面" class="headerlink" title="接口设计界面"></a>接口设计界面</h4><p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/introduce-2.a8fcbafb.png"></p>
+<h4 id="接口运行界面"><a href="#接口运行界面" class="headerlink" title="接口运行界面"></a>接口运行界面</h4><p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/introduce-3.b93319b3.png"></p>
+<h3 id="4-2-接口管理"><a href="#4-2-接口管理" class="headerlink" title="4.2 接口管理"></a>4.2 接口管理</h3><h4 id="4-2-1-接口设计-接口设计-接口文档-Apifox-帮助文档"><a href="#4-2-1-接口设计-接口设计-接口文档-Apifox-帮助文档" class="headerlink" title="4.2.1 [接口设计](接口设计 (接口文档) | Apifox 帮助文档)"></a>4.2.1 [接口设计](<a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/api-manage/api-design/#%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1-%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3">接口设计 (接口文档) | Apifox 帮助文档</a>)</h4><p>接口设计即定义接口文档规范（如接口路径、参数、返回值、数据结构等）。</p>
+<p>和 Postman 不一样，<strong>Apifox</strong> 是区分<code>接口设计</code>和<code>接口运行</code>两个概念的。</p>
+<ul>
+<li><p><strong>接口设计</strong>：即 <strong>新建接口</strong> 界面或接口详情里的 <strong>编辑</strong> 界面，用途是 <strong>定义接口文档规范</strong>，而不是 <strong>运行</strong> 接口，所以该界面是只能定义接口基本信息、<code>参数名</code>及参数说明等，而不能设置<code>参数值</code>。<strong>参数值</strong>、<strong>前置脚本&#x2F;后置脚本</strong> 等信息请在<code>接口运行</code>界面或<code>接口用例</code>界面填写。</p>
+</li>
+<li><p><strong>接口运行</strong>：即接口详情里的 <strong>运行</strong> 界面，用途是 <strong>临时调试接口</strong>，<strong>运行</strong> 完后，需要点击<code>保存为用例</code>，才能将填写的 <strong>参数值</strong>、<strong>前置脚本&#x2F;后置脚本</strong> 等信息保存下来；否则关闭 tab 后，这些信息将会丢失。</p>
+</li>
+<li><p><strong>如何像 Postman 那样不用提前设计接口就能快速调试？</strong> 使用 [快捷请求](#4.2.3 快捷请求)。</p>
+</li>
+</ul>
+<h5 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h5><p><strong>1.点击左侧搜索框旁边的 <code>+</code> 号按钮即可打开新建窗口，也可使用 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/shortcuts/">快捷键</a> Ctrl(⌘) + N。</strong></p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-detail-1.e9f9ac61.png"></p>
+<p><strong>2.在打开的窗口中，直接定义接口相关信息。</strong></p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-detail-2.63449b84.png"></p>
+<h5 id="接口路径"><a href="#接口路径" class="headerlink" title="接口路径"></a>接口路径</h5><p>以斜杠<code>/</code>起始的接口 path 部分，如<code>/pets</code>、<code>/pets/&#123;id&#125;</code>。</p>
+<blockquote>
+<p><strong>注意</strong></p>
+<ol>
+<li><em><strong>接口路径</strong> 建议<code>不要包含 HTTP 协议及域名</code>，这部分建议在 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/api-manage/environments/">环境管理</a> 的<code>前置URL</code>里设置，接口调试时的 URL 会自动加上当前环境的<code>前置URL</code>。</em></li>
+<li><em>特殊情况需在接口路径要带上<code>HTTP 协议及域名</code>的，系统也能支持，但不建议这么做。接口调试时，系统如检测到接口路径是以<code>http://</code>或<code>https://</code>起始的，会自动忽略当前环境里前置 URL。</em></li>
+<li><em>Apifox 中的 <code>Path 参数</code>是以大括号包裹起来表示，而非冒号起始表示。<strong>正确示例</strong>：<code>/pets/&#123;id&#125;</code>，*<em>错误示例</em></em><code>/pets/:id</code>。*</li>
+<li><em><strong>接口路径</strong> 不可包含<code>Query 参数</code>（即 URL 中 <code>?</code>后的参数），Query 参数在下方<code>请求参数</code>部分填写。</em></li>
+</ol>
+</blockquote>
+<h5 id="请求参数"><a href="#请求参数" class="headerlink" title="请求参数"></a>请求参数</h5><h6 id="Params-参数"><a href="#Params-参数" class="headerlink" title="Params 参数"></a><strong>Params 参数</strong></h6><p>包含 <code>Query 参数</code>和 <code>Path 参数</code>两部分。</p>
+<ul>
+<li><strong>Query 参数</strong>：即 URL 中 <code>?</code>后的参数。</li>
+<li><strong>Path 参数</strong>：自动提取<code>接口路径</code>中大括号包裹起来的参数，如<code>/pets/&#123;id&#125;</code>中的的<code>&#123;id&#125;</code>即表示名为<code>id</code>的 Path 参数。</li>
+</ul>
+<h6 id="Body-参数"><a href="#Body-参数" class="headerlink" title="Body 参数"></a>Body 参数</h6><p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-detail-body-1.95ed2818.png"></p>
+<p>Body 参数类型</p>
+<ul>
+<li><strong>none</strong>：无 body 参数。</li>
+<li><strong>form-data</strong>：即 Content-Type 为<code>multipart/form-data</code>。</li>
+<li><strong>x-www-form-urlencoded</strong>：即 Content-Type 为<code>application/x-www-form-urlencoded</code>。</li>
+<li><strong>json</strong>：即 Content-Type 为 <code>application/json</code>。</li>
+<li><strong>xml</strong>：即 Content-Type 为 <code>application/xml</code>。</li>
+<li><strong>binary</strong>：发送文件类数据时使用。</li>
+<li><strong>raw</strong>：发送其他文本类数据时使用。</li>
+</ul>
+<blockquote>
+<p><strong>注意</strong></p>
+<ul>
+<li><p>Body 参数类型为<code>json</code>或<code>xml</code>时，需要设置数据结构，并且数据结构可以引用<code>数据模型</code>，详细说明请查看文档：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/api-manage/api-schema/">数据结构&#x2F;数据模型</a>。</p>
+</li>
+<li><p>接口发送请求的时候会根据<code>Body 参数类型</code>自动在请求<code>Header</code>加上对应的<code>Content-Type</code>，无需手动设置。</p>
+<ul>
+<li>若需要手动设置<code>Heade</code>中的<code>Content-Type</code>，则其值必须和<code>Body 参数类型</code>相匹配，否则系统会自动忽略掉手动设置的<code>Content-Type</code>。</li>
+</ul>
+<ol>
+<li>示例：如 Body 参数类型为<code>form-data</code>，手动设置<code>Content-Type</code>的值为<code>multipart/form-data; charset=GBK</code>是有效的；但如果把值设置为<code>application/json</code>则会被系统忽略掉，因为和参数类型不匹配。</li>
+<li>Body 参数类型为<code>raw</code>时，手动设置<code>Content-Type</code>的值不受限制。</li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<h5 id="参数中使用环境变量（或全局变量-x2F-临时变量）"><a href="#参数中使用环境变量（或全局变量-x2F-临时变量）" class="headerlink" title="参数中使用环境变量（或全局变量&#x2F;临时变量）"></a>参数中使用环境变量（或全局变量&#x2F;临时变量）</h5><p>所有参数都可以使用变量，使用方式为双大括号包裹变量名，如<code>&#123;&#123;my_variable&#125;&#125;</code>，表示引用名为<code>my_variable</code>的变量。</p>
+<p>参数值使用变量时可以包含变量以外的字符串，如：参数值设置为<code>prefix-&#123;&#123;my_variable&#125;&#125;-surfix</code>，假设运行时变量<code>my_variable</code>的值为<code>123</code>，则实际请求时参数的值为<code>prefix-123-surfix</code>。</p>
+<p>更多关于变量的说明请查看文档：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/api-manage/variables/">环境变量&#x2F;全局变量&#x2F;临时变量</a>。</p>
+<h5 id="返回响应"><a href="#返回响应" class="headerlink" title="返回响应"></a>返回响应</h5><p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-detail-response-1.1a8d21db.png"></p>
+<p>返回响应定义主要包含以下几部分</p>
+<ul>
+<li>接口返回的 HTTP 状态码</li>
+<li>返回内容的数据格式：<code>JSON</code>、<code>XML</code>、<code>HTML</code>、<code>Raw</code>、<code>Binary</code></li>
+<li>数据结构：仅<code>JSON</code>、<code>XML</code>可配置数据结构，关于数据结构详细说明，请查看文档：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/api-manage/api-schema/">数据结构&#x2F;数据模型</a></li>
+</ul>
+<blockquote>
+<p><strong>注意</strong></p>
+<ul>
+<li>当一个接口在不同情况下会返回不同数据结构时，可设置多个<code>返回响应</code>。点击<code>返回响应</code>模块右上方的<code>+ 新建</code>即可添加。</li>
+<li>定义好数据结构后，<code>接口调试</code>时，系统会自动校验返回的数据是否符合定义的数据结构，非常方便，更多说明请查看文档：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/api-manage/api-case/">接口调试&#x2F;接口用例</a>。</li>
+<li>定义好数据结构后，<code>使用 mock 功能</code>时，系统会自动根据定义的数据结构 mock 出非常人性化的数据，非常方便，更多说明请查看文档：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/mock/">Mock 数据</a></li>
+</ul>
+</blockquote>
+<h5 id="公共响应"><a href="#公共响应" class="headerlink" title="公共响应"></a>公共响应</h5><p><code>公共响应</code>主要用来实现返回响应的复用。</p>
+<p>通常不同接口在某些情况下会返回相同的数据结构，如<code>资源不存在(404)</code>、<code>没有访问权限(401)</code>等，这些建议设置为<code>公共响应</code>，避免重复编写，方便统一管理。</p>
+<p>设置方法：打开<code>项目设置</code>-&gt;<code>公共响应</code>，在这里管理公共响应。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-detail-response-2.3ed21893.png"></p>
+<h4 id="4-2-2-接口调试-接口调试-x2F-接口用例-Apifox-帮助文档"><a href="#4-2-2-接口调试-接口调试-x2F-接口用例-Apifox-帮助文档" class="headerlink" title="4.2.2 [接口调试](接口调试 &#x2F; 接口用例 | Apifox 帮助文档)"></a>4.2.2 [接口调试](<a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/api-manage/api-case/#%E6%8E%A5%E5%8F%A3%E8%B0%83%E8%AF%95-%E6%8E%A5%E5%8F%A3%E7%94%A8%E4%BE%8B">接口调试 &#x2F; 接口用例 | Apifox 帮助文档</a>)</h4><h5 id="快速上手-1"><a href="#快速上手-1" class="headerlink" title="快速上手"></a>快速上手</h5><p>打开接口文档，点击<code>运行</code> tab 即可。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-detail-3.523d232b.png"></p>
+<ol>
+<li>接口路径、参数名会自动从 <code>修改文档</code> 读取，无需手动输入</li>
+<li>参数值默认读取 <code>修改文档</code> 里的 <code>示例值</code>，也可手动修改，进行调试</li>
+<li>填写好参数后，点击<code>发送</code>按钮即可运行。</li>
+</ol>
+<h5 id="保存为用例"><a href="#保存为用例" class="headerlink" title="保存为用例"></a>保存为用例</h5><p><code>保存为用例</code> 是将当前填写的参数保存起来，方便下次或者其他人用来调试接口。保存为用例后，<code>接口用例</code> 会显示在左侧树状菜单里接口的下一级（如上图）。</p>
+<blockquote>
+<p><strong>注意</strong></p>
+<ul>
+<li>接口用例是非常有用的。从团队协作的场景出发，建议每次<code>运行</code>后都<code>保存为用例</code>，后续用<code>接口用例</code>来调试接口是非常高效的。</li>
+<li>通常一个接口会有多种情况用例，比如<code>参数正确</code>用例、<code>参数错误</code>用例、<code>数据为空</code>用例、<code>不同数据状态</code>用例等等。</li>
+</ul>
+</blockquote>
+<h5 id="暂存"><a href="#暂存" class="headerlink" title="暂存"></a>暂存</h5><ol>
+<li>在已有参数的情况下，修改<code>参数名</code>、<code>数据类型</code>、<code>参数说明</code>，修改项左侧会有“黄色标记”，鼠标移动到“黄色标记”上时，会显示和接口文档的区别。您可以选择<code>复原</code>，和接口文档保持一致；可以选择<code>保存到文档</code>，将修改项同步到接口文档；也可以选择不操作，以当前修改项进行调试。<img src="https://cdn.apifox.cn/mirror-www-com/help/assets/stash-1.6bcdfa74.png"></li>
+<li>如果需要新增参数，可以正常添加，添加后整行的左侧会出现“黄色标记”，鼠标移动到“黄色标记”上时，会显示和接口文档的区别。<img src="https://cdn.apifox.cn/mirror-www-com/help/assets/stash-2.5a1bef3f.png"></li>
+<li>当修改项很多时，需要整体<code>复原</code>或<code>保存到文档</code>时，可以看到请求参数右上角有<code>不一致</code>文字，鼠标移动上去，根据需要选择。<img src="https://cdn.apifox.cn/mirror-www-com/help/assets/stash-3.c2ca1b97.png"></li>
+</ol>
+<h5 id="前置操作-x2F-后置操作"><a href="#前置操作-x2F-后置操作" class="headerlink" title="前置操作&#x2F;后置操作"></a>前置操作&#x2F;后置操作</h5><p><code>前置操作/后置操作</code> 的设置维度支持分组维度、单个接口&#x2F;接口用例。</p>
+<ol>
+<li>分组维度：点击对应的 <code>分组</code> 文件夹即可设置，可自主选择是否对该分组下的接口&#x2F;接口用例生效。<img src="https://cdn.apifox.cn/mirror-www-com/help/assets/pre-processors-1.3e14b768.png"></li>
+<li>单个接口&#x2F;接口用例：可以针对单个接口&#x2F;接口用例设置 <code>前置操作/后置操作</code>，只对本接口&#x2F;接口用例生效。<img src="https://cdn.apifox.cn/mirror-www-com/help/assets/pre-processors-2.0e6ca489.png"></li>
+<li>单个接口&#x2F;接口用例<strong>默认继承父级的前&#x2F;后置操作</strong>，可关闭继承；单个接口&#x2F;接口用例的前&#x2F;后置操作支持移动到父级分组维度。<img src="https://cdn.apifox.cn/mirror-www-com/help/assets/pre-processors-3.c19d22a4.png"></li>
+</ol>
+<h6 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h6><p><code>后置操作</code>支持添加<code>断言</code>，可对接口返回的数据（或响应时间）设置断言，判断是否符合预期。<a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/processor/assertion/">查看断言功能文档</a></p>
+<h6 id="提取变量"><a href="#提取变量" class="headerlink" title="提取变量"></a>提取变量</h6><p><code>后置操作</code>支持添加<code>提取变量</code>，可从接口返回结果里提取数据，设置到变量（临时变量&#x2F;环境变量&#x2F;全局变量），方便其他接口运行的时候直接使用。<a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/processor/extractor/">查看提取变量功能文档</a></p>
+<h5 id="校验响应"><a href="#校验响应" class="headerlink" title="校验响应"></a>校验响应</h5><p><code>校验响应</code> 是一个高效的测试工具，以 <code>接口文档-修改文档</code> 页面内填写的 <code>返回响应</code> 作为判断标准，与 <code>请求接口</code> 的获得的返回值进行对比。</p>
+<ol>
+<li><code>校验响应</code> 的校验范围：<img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-detail-response-1.1a8d21db.png"></li>
+</ol>
+<ul>
+<li>接口返回的 HTTP 状态码</li>
+<li>返回内容的数据格式：<code>JSON</code>、<code>XML</code>、<code>HTML</code>、<code>Raw</code>、<code>Binary</code></li>
+<li>数据结构：仅<code>JSON</code>、<code>XML</code>可配置数据结构，关于数据结构详细说明，请查看文档：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/api-manage/api-schema/">数据结构&#x2F;数据模型</a></li>
+</ul>
+<ol start="2">
+<li>如果上述 2 者一致，则显示 ”返回数据结构校验通过!“。说明真实的接口返回值是符合接口文档定义的，不需要人工核对，提高效率和准确性。</li>
+</ol>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-detail-response-3.b7d8a718.png"></p>
+<ol start="3">
+<li>当不一致时，就会报错并提示具体是哪部分不一致。此时你可以选择修改 <code>接口文档-修改文档</code> 内的 <code>返回响应</code> ；也可以通知后端同学修改后端代码。</li>
+<li><code>校验响应</code> 开关默认打开。可以在界面左下角 <code>设置-通用-校验响应</code> 关闭全局开关，注意：全局开关只会对 <code>接口文档-运行</code> 生效，不会对已保存的 <code>接口用例</code> 生效。</li>
+</ol>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-detail-response-4.28d35fe0.png"></p>
+<h4 id="4-2-3-快捷请求-快捷请求-Apifox-帮助文档"><a href="#4-2-3-快捷请求-快捷请求-Apifox-帮助文档" class="headerlink" title="4.2.3 [快捷请求](快捷请求 | Apifox 帮助文档)"></a>4.2.3 [快捷请求](<a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/api-manage/quick-debug/#%E5%BF%AB%E6%8D%B7%E8%AF%B7%E6%B1%82">快捷请求 | Apifox 帮助文档</a>)</h4><h5 id="1-鼠标移到左侧搜索框旁边的-号按钮，在下拉列表里选择快捷请求，也可使用-快捷键：Ctrl-⌘-T。"><a href="#1-鼠标移到左侧搜索框旁边的-号按钮，在下拉列表里选择快捷请求，也可使用-快捷键：Ctrl-⌘-T。" class="headerlink" title="1.鼠标移到左侧搜索框旁边的 + 号按钮，在下拉列表里选择快捷请求，也可使用 快捷键：Ctrl(⌘) + T。"></a>1.鼠标移到左侧搜索框旁边的 <code>+</code> 号按钮，在下拉列表里选择<code>快捷请求</code>，也可使用 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/shortcuts/">快捷键</a>：Ctrl(⌘) + T。</h5><p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/quick-debug-1.770bdaec.png"></p>
+<h5 id="2-鼠标移动到左侧目录中，在快捷请求右边点击-号按钮，也可新建快捷请求"><a href="#2-鼠标移动到左侧目录中，在快捷请求右边点击-号按钮，也可新建快捷请求" class="headerlink" title="2.鼠标移动到左侧目录中，在快捷请求右边点击 + 号按钮，也可新建快捷请求"></a>2.鼠标移动到左侧目录中，在<code>快捷请求</code>右边点击 <code>+</code> 号按钮，也可新建<code>快捷请求</code></h5><p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/quick-debug-2.7c479783.png"></p>
+<h5 id="3-输入接口-URL-及参数，即可快速请求接口（如果输入的-URL-不是以http-或https-起始，实际发出请求的时候会自动加上当前环境里前置-URL。）"><a href="#3-输入接口-URL-及参数，即可快速请求接口（如果输入的-URL-不是以http-或https-起始，实际发出请求的时候会自动加上当前环境里前置-URL。）" class="headerlink" title="3.输入接口 URL 及参数，即可快速请求接口（如果输入的 URL 不是以http://或https://起始，实际发出请求的时候会自动加上当前环境里前置 URL。）"></a>3.输入接口 URL 及参数，即可快速请求接口（如果输入的 URL <code>不是</code>以<code>http://</code>或<code>https://</code>起始，实际发出请求的时候<code>会</code>自动加上<code>当前环境</code>里前置 URL。）</h5><p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/quick-debug-3.fe1d7ded.png"></p>
+<h5 id="4-调试完成后，可以保存为快捷请求或接口文档"><a href="#4-调试完成后，可以保存为快捷请求或接口文档" class="headerlink" title="4.调试完成后，可以保存为快捷请求或接口文档"></a>4.调试完成后，可以保存为<code>快捷请求</code>或<code>接口文档</code></h5><p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/quick-debug-4.402495b5.png"></p>
+<h5 id="5-在左侧目录可以管理已保存的快捷请求"><a href="#5-在左侧目录可以管理已保存的快捷请求" class="headerlink" title="5.在左侧目录可以管理已保存的快捷请求"></a>5.在左侧目录可以管理已保存的<code>快捷请求</code></h5><p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/quick-debug-5.c14a2324.png"></p>
+<h5 id="6-快捷请求-支持-生成代码，详情请见-生成代码"><a href="#6-快捷请求-支持-生成代码，详情请见-生成代码" class="headerlink" title="6.快捷请求 支持 生成代码，详情请见 生成代码"></a>6.<code>快捷请求</code> 支持 <code>生成代码</code>，详情请见 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/code-generator/">生成代码</a></h5><p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/quick-debug-6.635cda18.png"></p>
+<h4 id="4-2-4-数据结构-x2F-数据模型-数据结构-x2F-数据模型-Apifox-帮助文档"><a href="#4-2-4-数据结构-x2F-数据模型-数据结构-x2F-数据模型-Apifox-帮助文档" class="headerlink" title="4.2.4 [数据结构 &#x2F; 数据模型](数据结构 &#x2F; 数据模型 | Apifox 帮助文档)"></a>4.2.4 [数据结构 &#x2F; 数据模型](<a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/api-manage/api-schema/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B">数据结构 &#x2F; 数据模型 | Apifox 帮助文档</a>)</h4><h5 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h5><p><code>数据结构</code> 和编程语言里的数据结构类似，主要使用在 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/api-manage/api-design/">接口设计</a> 的<code>返回响应</code>和 json &#x2F; xml 类型的<code>Body 参数</code>。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-schema-1.1970abf8.png"></p>
+<p><strong>JSON &#x2F; XML 智能识别&#x2F;快捷导入</strong></p>
+<p>通过 JSON 数据自动识别生成数据结构，如果你已经有 JSON 数据了，这是一个快捷生成的方式。</p>
+<blockquote>
+<p><strong>注意</strong></p>
+<p>JSON 智能识别的作用只是生成数据结构，并不会将 JSON 里的值保存下来。 在 2.1.39 版本之后，JSON 智能识别支持识别 <code>注释</code> 字段，并写入说明</p>
+</blockquote>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-schema-2.033ea85e.png"></p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-schema-3.7cbf3b2a.png"></p>
+<p><strong>快捷导入支持 SQL 建表语句</strong></p>
+<p>快捷导入支持 SQL 建表语句，并读取数据库字段长度，写入字段属性。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-schema-3-2.0dcf89de.png"></p>
+<h5 id="编辑数据结构"><a href="#编辑数据结构" class="headerlink" title="编辑数据结构"></a>编辑数据结构</h5><ol>
+<li>可以选择该字段是否必填</li>
+</ol>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-schema-4.315c89d6.png"></p>
+<ol start="2">
+<li>可以选择该字段的数据类型</li>
+</ol>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-schema-5.9125245f.png"></p>
+<ol start="3">
+<li>可以编辑该字段的<code>Mock 设置</code>，具体语法可以查看 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/mock/mock-rules/">Mock 语法</a></li>
+<li>可以新增字段，或删除该字段</li>
+</ol>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-schema-6.ce0db50a.png"></p>
+<ol start="5">
+<li>可拖拽移动，改变字段之间的排序</li>
+</ol>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-schema-7.f0ff1d2a.png"></p>
+<h5 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h5><p>数据模型是<code>可复用的数据结构</code>。在设计数据结构时可以在<code>数据类型</code>直接选择已经定义好的<code>数据模型</code>。</p>
+<p>在使用<code>数据模型</code>前，需要先建立<code>可复用的数据结构</code>。如下图，根据项目需要，可以先在<code>数据模型</code>下新建，也可以简单的管理不同数据模型间的关系。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-schema-8.4cf560e6.png"></p>
+<blockquote>
+<p><strong>注意</strong></p>
+<p>数据模型之间也可以相互引用</p>
+</blockquote>
+<h5 id="数据模型的引用"><a href="#数据模型的引用" class="headerlink" title="数据模型的引用"></a>数据模型的引用</h5><p>在 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/api-manage/api-design/">接口设计</a> 的<code>返回响应</code>和 json &#x2F; xml 类型的<code>Body 参数</code>处，在<code>数据类型</code>处可以引用已经建立好的<code>数据模型</code>，如下图。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-schema-9.89b7d1b7.png"></p>
+<ol>
+<li>当前引用的数据模型不符合要求，需要修改时，可以直接跳转到<code>数据模型</code>进行修改</li>
+</ol>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-schema-10.e27afdbf.png"></p>
+<ol start="2">
+<li><p>当下接口需要部分引用<code>数据模型</code>时，可以在引用的情况下修改，并且不影响原<code>数据模型</code></p>
+<ol>
+<li><p>当不需要<code>数据模型</code>中的某个字段时，可以点击<code>隐藏字段</code>，则接口文档中就不会显示了<img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-schema-11.c37d6abf.png"></p>
+</li>
+<li><p>当需要对<code>数据模型</code>中的某个字段，特殊编辑时，可以点击<code>取消关联</code>。当然后续也可以<code>恢复关联</code> <img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-schema-12.e1f6d60c.png"></p>
+<p> <img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-schema-13.715848a5.png"></p>
+</li>
+</ol>
+</li>
+<li><p>可以引用多个<code>数据模型</code>，并支持<code>数据模型</code>之间拖拽排序<img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-schema-15.73cb36aa.png"></p>
+</li>
+</ol>
+<h5 id="生成代码"><a href="#生成代码" class="headerlink" title="生成代码"></a>生成代码</h5><p>根据数据结构生成各种语言的代码，更多信息请查看文档：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/code-generator/">代码生成</a>。</p>
+<h4 id="4-2-5-环境管理-环境管理-Apifox-帮助文档"><a href="#4-2-5-环境管理-环境管理-Apifox-帮助文档" class="headerlink" title="4.2.5 [环境管理](环境管理 | Apifox 帮助文档)"></a>4.2.5 [环境管理](<a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/api-manage/environments/#%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86">环境管理 | Apifox 帮助文档</a>)</h4><blockquote>
+<p>一个项目在不同的阶段会处于不同的环境中，比如<code>开发环境</code>、<code>测试环境</code>、<code>生产环境</code>，通常不同的环境有不同的<code>前置 URL</code>、<code>接口参数值</code>等。因环境不同而频繁的更改接口前置 URL 及参数，是非常的麻烦的。 Apifox 的<code>环境管理</code>功能，只需在不同的<code>环境</code>设置不同的前置 URL 及参数，在不同环境中测试时，直接切换环境即可。</p>
+</blockquote>
+<h5 id="设置环境"><a href="#设置环境" class="headerlink" title="设置环境"></a>设置环境</h5><p>在界面的右上角，是<code>环境管理</code>的入口，可以用过下图两种方式，进入<code>环境管理</code>页面。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/environments-1.c4c3745d.png"></p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/environments-2.c5ed101c.png"></p>
+<p><strong>环境管理页面</strong></p>
+<p>可以在左侧新建或删除环境，右侧可以对某个环境进行编辑。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/environments-3.6e2a85cf.png"></p>
+<p><strong>功能点说明</strong></p>
+<ol>
+<li><strong>前置 URL</strong>：接口运行时自动添加到接口路径前组成接口实际请求的 URL，如前置 URL 为<code>https://www.api.com</code>，接口路径为<code>/pets/123</code>，那么实际请求的 URL 为<code>https://www.api.com/pets/123</code>。</li>
+<li><strong>环境变量</strong>：跟随环境切换而发生改变的变量，具体说明可以查看文档 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/api-manage/variables/">环境变量&#x2F;全局变量&#x2F;临时变量</a>。</li>
+<li><strong>额外参数</strong>：当前环境下，给所有接口请求额外加上参数。注：额外参数的参数值可以引用环境变量&#x2F;全局变量&#x2F;临时变量。</li>
+</ol>
+<blockquote>
+<p><strong>注意</strong></p>
+<ol>
+<li><strong>前置 URL</strong> 末尾建议<code>不要</code>加上斜杠<code>/</code>，接口设计时 <strong>接口路径</strong> 建议以斜杠<code>/</code>起始。</li>
+<li>如果<code>接口路径</code>本身就以<code>http://</code>或<code>https://</code>起始，实际发出请求的时候<code>不会</code>自动加上前置 URL。但通常不建议这么使用。</li>
+</ol>
+</blockquote>
+<p><strong>快捷切换环境</strong></p>
+<p>根据需要，可以在页面右上角，快速切换为你所需要的环境</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/environments-4.224f0e44.png"></p>
+<h5 id="服务（前置URL）"><a href="#服务（前置URL）" class="headerlink" title="服务（前置URL）"></a>服务（前置URL）</h5><blockquote>
+<p>注意：正常情况不要添加多个“服务”！！!</p>
+<p><code>当且仅当</code>同一“环境”下，多个接口使用不同的 “前置URL”时，才需要添加多个服务。这种场景下，每个服务设置不同 “前置URL”，不同接口或分组选择不同 “服务”即可。</p>
+</blockquote>
+<p><strong>服务和环境的区别</strong></p>
+<p>使用场景示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">环境：</span><br><span class="line">  开发环境</span><br><span class="line">  测试环境</span><br><span class="line">  预发布环境</span><br><span class="line">  正式环境</span><br><span class="line"></span><br><span class="line">服务：</span><br><span class="line">  用户服务（user.xxx.com）：登录等接口</span><br><span class="line">  交易服务（trade.xxx.com）：交易相关接口</span><br><span class="line">  直播服务（live.xxx.com）：直播相关接口</span><br></pre></td></tr></table></figure>
+
+<p><strong>设置服务</strong></p>
+<p>在<code>环境管理</code>页面，可以填入所需要的<code>前置 URL</code>。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/environments-5.112ca2ec.png"></p>
+<p><strong>使用服务</strong></p>
+<ol>
+<li>在分组设置中，可以设置当前环境下的不同服务。（推荐使用）</li>
+</ol>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/environments-6.4b138bcb.png"></p>
+<ol start="2">
+<li>在接口文档-修改文档中，可以设置当前环境下的不同服务。</li>
+</ol>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/environments-7.7d9926cf.png"></p>
+<h4 id="4-2-6-环境变量-x2F-全局变量-x2F-临时变量-环境变量-x2F-全局变量-x2F-临时变量-Apifox-帮助文档"><a href="#4-2-6-环境变量-x2F-全局变量-x2F-临时变量-环境变量-x2F-全局变量-x2F-临时变量-Apifox-帮助文档" class="headerlink" title="4.2.6 [环境变量 &#x2F; 全局变量 &#x2F; 临时变量](环境变量 &#x2F; 全局变量 &#x2F; 临时变量 | Apifox 帮助文档)"></a>4.2.6 [环境变量 &#x2F; 全局变量 &#x2F; 临时变量](<a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/api-manage/variables/#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F-%E4%B8%B4%E6%97%B6%E5%8F%98%E9%87%8F">环境变量 &#x2F; 全局变量 &#x2F; 临时变量 | Apifox 帮助文档</a>)</h4><p>和编程语言类似，变量是允许在多个地方重复使用的值。不同的接口用例（请求参数、脚本等）可以引用相同的变量值，只需要更改一次变量值，就能改变所有引用了该变量的相关值。使用变量可以大幅提升工作效率。</p>
+<h5 id="快速上手-2"><a href="#快速上手-2" class="headerlink" title="快速上手"></a>快速上手</h5><ol>
+<li><p>打开<code>环境管理</code>（软件右上角<code>设置形状</code>的按钮），选择<code>全局变量</code> tab。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/environments-01.a750097e.png"></p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/environments-02.f184e127.png"></p>
+</li>
+<li><p>添加一个名为<code>my_variable</code>的变量，将<code>本地值</code>设置值为<code>hello</code>，点击<code>保存</code>。</p>
+</li>
+<li><p>打开一个接口，在<code>运行</code> tab （或接口用例）的参数值里输入<code>&#123;&#123;my_variable&#125;&#125;</code>即可引用该变量。</p>
+</li>
+<li><p>点击<code>运行</code>按钮，发送请求，实际运行的时候系统会将<code>&#123;&#123;my_variable&#125;&#125;</code>替换为<code>hello</code>，然后发出请求。</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>注意</strong></p>
+<ul>
+<li>系统内置名为<code>BASE_URL</code>的特殊环境变量，其值为当前环境的<code>前置URL</code>，使用方式<code>&#123;&#123;BASE_URL&#125;&#125;</code>。</li>
+<li>如用户手动添加了名为<code>BASE_URL</code>的环境变量，则会覆盖掉系统内置<code>BASE_URL</code>的值。</li>
+<li>脚本可通过 <code>pm.environment.get(&#39;BASE_URL&#39;)</code> 方式读取<code>前置URL</code>。</li>
+<li>脚本<code>不能</code>修改<code>前置URL</code>，脚本 <code>pm.environment.set(&#39;BASE_URL&#39;,&#39;xxx&#39;)</code>会生成一个真正的名为<code>BASE_URL</code>的环境变量，而不会修改<code>前置URL</code>。</li>
+<li>Apifox 版本号大于等于 <code>1.0.12</code> 才支持内置<code>BASE_URL</code>。</li>
+</ul>
+</blockquote>
+<h5 id="本地值和远程值的区别"><a href="#本地值和远程值的区别" class="headerlink" title="本地值和远程值的区别"></a>本地值和远程值的区别</h5><ol>
+<li>所有使用到变量的地方，实际运行的时候都是读写<code>本地值</code>，而不会读写<code>远程值</code>。</li>
+<li><strong>本地值</strong> 仅存放在本地，不会同步到云端，团队成员之间也不会相互同步，适合存放<code>token</code>、<code>账号</code>、<code>密码</code>之类的敏感数据。</li>
+<li><strong>远程值</strong> 会同步到云端，主要用来团队成员之间共享数据值。</li>
+</ol>
+<blockquote>
+<p><strong>注意</strong></p>
+<p>由于<code>本地值</code>仅存放在本地，使用一些清理软件清理 Apifox 文件缓存会导致<code>本地值</code>被清空，请务必注意。</p>
+</blockquote>
+<h5 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h5><ol>
+<li><strong>环境变量</strong> 是最常用的变量，同一个变量可以在不同的环境设置不同的值，变量值会跟随环境切换而改变。环境变量在<code>环境管理</code>模块设置，查看文档：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/api-manage/environments/">环境管理</a></li>
+<li><strong>全局变量</strong> 使用方法类环境变量类似，但全局变量不会跟随环境切换而改变。</li>
+<li><strong>临时变量</strong> 仅在单次运行<code>接口用例</code>或测试管理里的<code>测试用例</code>或<code>测试套件</code>过程中有效，不会持久化保存。</li>
+</ol>
+<h5 id="使用变量"><a href="#使用变量" class="headerlink" title="使用变量"></a>使用变量</h5><ol>
+<li>所有类型的变量都是通过双大括号的方式，如<code>&#123;&#123;token&#125;&#125;</code>。</li>
+<li><code>接口运行tab</code>、<code>接口用例</code>、<code>快捷调试</code>、<code>集合测试</code>的所有<code>参数值</code>、<code>前置/后置脚本</code>都可以使用变量。</li>
+<li><code>环境</code>里的<code>额外参数</code>也可以使用变量。</li>
+</ol>
+<blockquote>
+<p><strong>提示</strong></p>
+<p>请求 <strong>Body</strong> 为 <strong>json</strong> 或者 <strong>raw</strong> 格式的，也可以直接使用变量、动态变量，使用方式如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;field1&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;&#123;stringVariable&#125;&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;field2&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#123;</span>intVariable<span class="punctuation">&#125;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;field3&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#123;</span>arrayVariable<span class="punctuation">&#125;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;field4&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#123;</span>objectVariable<span class="punctuation">&#125;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;field5&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#123;</span>$timestamp<span class="punctuation">&#125;</span><span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<ol>
+<li><strong>json</strong> 格式里 string 类型的值，使用变量的时候需要加上<code>双引用</code>；其他类型的值<code>不要加双引号</code>，如上面例子所示。</li>
+<li>如果以<code>没有加双引号</code>的方式使用了变量，请不要使用<code>格式化</code>功能，如有提示 JSON 格式不正确，直接忽略即可。</li>
+</ol>
+</blockquote>
+<p>若变量的值为<code>对象</code>或<code>数组</code>形式，可以通过<code>&#123;&#123;variableName.attributeName&#125;&#125;</code>或<code>&#123;&#123;variableName[0].attributeName&#125;&#125;</code>方式读取变量里的属性值，示例：</p>
+<ol>
+<li><p>变量<code>user</code>的值为如下格式<code>对象</code>：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;jack&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>接口参数中以<code>&#123;&#123;user.name&#125;&#125;</code>方式引用<code>user</code>对象里的<code>name</code>属性值。</li>
+<li>自定义代码中以<code>pm.variables.get(&quot;user.name&quot;)</code>方式引用<code>user</code>对象里的<code>name</code>属性值。</li>
+</ol>
+</li>
+<li><p>变量<code>user</code>的值为如下格式<code>数组</code>：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">[</span></span><br><span class="line">  <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;jack&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>接口参数中以<code>&#123;&#123;user[0].name&#125;&#125;</code>方式引用<code>user</code>数组里第一个对象里的<code>name</code>属性值。</li>
+<li>自定义代码中以<code>pm.variables.get(&quot;user[0].name&quot;)</code>方式引用<code>user</code>数组里第一个对象里的<code>name</code>属性值。</li>
+</ol>
+</li>
+</ol>
+<p>如上所示，读取变量（对象或数组）里的属性值写法<code>&#123;&#123;user.name&#125;&#125;</code>遵循<code>JSON Path</code>语法规范，只需将<code>JSON Path</code>里的<code>$</code>符号替换为<code>变量名</code>既可。</p>
+<h5 id="变量优先级"><a href="#变量优先级" class="headerlink" title="变量优先级"></a>变量优先级</h5><p>所有变量都是通过双大括号的方式引用，当<code>不同类型变量</code>存在<code>相同名称的变量</code>时，系统会根据优先级决定使用哪个类型的变量。</p>
+<p>变量优先级：<strong>临时变量 &gt; 测试数据变量 &gt; 环境变量 &gt; 全局变量</strong>。</p>
+<h5 id="脚本中使用变量"><a href="#脚本中使用变量" class="headerlink" title="脚本中使用变量"></a>脚本中使用变量</h5><h6 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置环境变量</span></span><br><span class="line">pm.<span class="property">environment</span>.<span class="title function_">set</span>(<span class="string">&#x27;variable_key&#x27;</span>, <span class="string">&#x27;variable_value&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取环境变量</span></span><br><span class="line"><span class="keyword">var</span> variable_key = pm.<span class="property">environment</span>.<span class="title function_">get</span>(<span class="string">&#x27;variable_key&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// unset 环境变量</span></span><br><span class="line">pm.<span class="property">environment</span>.<span class="title function_">unset</span>(<span class="string">&#x27;variable_key&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>将对象或数组（非字符串）写入环境变量</strong></p>
+<p><strong>环境变量写入</strong></p>
+<p>环境变量支持数组、对象、字符串等形式存储</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line">pm.<span class="property">environment</span>.<span class="title function_">set</span>(<span class="string">&#x27;array&#x27;</span>, <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(array));</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">a</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], <span class="attr">b</span>: &#123; <span class="attr">c</span>: <span class="string">&#x27;val&#x27;</span> &#125; &#125;;</span><br><span class="line">pm.<span class="property">environment</span>.<span class="title function_">set</span>(<span class="string">&#x27;obj&#x27;</span>, <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(obj));</span><br></pre></td></tr></table></figure>
+
+<p>读取的时候，需要使用<code>JSON.parse</code>转换回来</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">var</span> array = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(pm.<span class="property">environment</span>.<span class="title function_">get</span>(<span class="string">&#x27;array&#x27;</span>));</span><br><span class="line">  <span class="keyword">var</span> obj = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(pm.<span class="property">environment</span>.<span class="title function_">get</span>(<span class="string">&#x27;obj&#x27;</span>));</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">  <span class="comment">// 处理异常</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置全局变量</span></span><br><span class="line">pm.<span class="property">globals</span>.<span class="title function_">set</span>(<span class="string">&#x27;variable_key&#x27;</span>, <span class="string">&#x27;variable_value&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取全局变量</span></span><br><span class="line"><span class="keyword">var</span> variable_key = pm.<span class="property">globals</span>.<span class="title function_">get</span>(<span class="string">&#x27;variable_key&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// unset 全局变量</span></span><br><span class="line">pm.<span class="property">globals</span>.<span class="title function_">unset</span>(<span class="string">&#x27;variable_key&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h6 id="临时变量"><a href="#临时变量" class="headerlink" title="临时变量"></a>临时变量</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置临时变量</span></span><br><span class="line">pm.<span class="property">variables</span>.<span class="title function_">set</span>(<span class="string">&#x27;variable_key&#x27;</span>, <span class="string">&#x27;variable_value&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取临时变量</span></span><br><span class="line"><span class="keyword">var</span> variable_key = pm.<span class="property">variables</span>.<span class="title function_">get</span>(<span class="string">&#x27;variable_key&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// unset 临时变量</span></span><br><span class="line">pm.<span class="property">variables</span>.<span class="title function_">unset</span>(<span class="string">&#x27;variable_key&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-2-7-接口修改历史-接口修改历史-Apifox-帮助文档"><a href="#4-2-7-接口修改历史-接口修改历史-Apifox-帮助文档" class="headerlink" title="4.2.7 [接口修改历史](接口修改历史 | Apifox 帮助文档)"></a>4.2.7 [接口修改历史](<a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/api-manage/api-change-history/#%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E5%8E%86%E5%8F%B2">接口修改历史 | Apifox 帮助文档</a>)</h4><p>为了更好的支持团队协作的场景，在 2.2.18 之后的版本中，新增 <code>接口修改历史</code> 功能。</p>
+<p><code>接口修改历史</code> 会记录团队成员对接口各个字段的 <code>修改</code> 操作，也会记录因为 <code>导入覆盖</code> 造成的接口文档的修改，并且支持 <code>对比</code> 操作前后的差异，你可以选择 <code>还原</code> 到任意一个历史版本中。</p>
+<h5 id="快速上手-3"><a href="#快速上手-3" class="headerlink" title="快速上手"></a>快速上手</h5><p>当你需要查看 <code>接口修改历史</code> 时，点击 <code>接口文档</code> 内的右上角的 icon，即可展开 <code>接口修改历史</code>。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-change-history-1.438bb893.png"></p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-change-history-2.75b2fdee.png"></p>
+<p>点击某一条记录，则可以显示这次操作前后，各个字段变化的情况</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-change-history-3.9fbaebae.png"></p>
+<p>如果需要恢复到上一个版本，可以点击 <code>还原此版本</code>，则会将使用这个的历史版本内容生成一个新版本，原本的修改历史不受影响。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/api-change-history-4.46bd1f65.png"></p>
+<h3 id="4-3-全自动登录实现"><a href="#4-3-全自动登录实现" class="headerlink" title="4.3 全自动登录实现"></a>4.3 全自动登录实现</h3><p>1.运行接口用例的时候，自动完成登录，而无需手动登录。<br>2.自动登录过一次后，保存登录态，避免每次执行用例都调用登录接口。</p>
+<h4 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h4><ol>
+<li>使用 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/api-manage/environments/">环境变量</a>（如：<code>ACCESS_TOKEN</code>）保存登录需要的凭证。</li>
+<li>如凭证有过期时间，使用环境变量（如：<code>ACCESS_TOKEN_EXPIRES</code>）保存登录凭证的过期时间。</li>
+<li>创建一个 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/scripts/common-script/">公共脚本</a> ：<ol>
+<li>判断环境变量<code>ACCESS_TOKEN</code>是否有值，以及<code>ACCESS_TOKEN_EXPIRES</code>是否过期，如果存在且未过期，跳出执行，否则下一步。</li>
+<li>使用 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/scripts/api-references/pm-reference/#pm-sendrequest">pm.sendRequest</a> 调用登录接口，将登录接口返回的登录凭证写入环境变量，过期时间也写入环境变量。</li>
+</ol>
+</li>
+<li>设置需要登录态的接口用例：<ol>
+<li>将用来验证登录态的参数值设置为<code>&#123;&#123;ACCESS_TOKEN&#125;&#125;</code> 。<ul>
+<li>将 header 里的<code>Authorization</code>的设置为<code>&#123;&#123;ACCESS_TOKEN&#125;&#125;</code>。注意：这里也可以使用 Cookie 或其他位置的参数，请根据实际情况确定。</li>
+<li>此处也可以在 <strong>环境</strong> 里的 <strong>全局参数</strong> 统一设置，所有接口运行时会自动加上 <strong>全局参数</strong>，无需每个接口手动设置。</li>
+</ul>
+</li>
+<li>在 <strong>前置脚本</strong> 里引用前面创建公共脚本。</li>
+</ol>
+</li>
+</ol>
+<h4 id="示例（以lsh-plat为例）"><a href="#示例（以lsh-plat为例）" class="headerlink" title="示例（以lsh-plat为例）"></a>示例（以lsh-plat为例）</h4><h5 id="公共脚本"><a href="#公共脚本" class="headerlink" title="公共脚本"></a>公共脚本</h5><p>新建 <code>全自动登录实现公共脚本</code></p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.picgo.net/image/w1okG"><img src="https://img.picgo.net/2023/04/23/image405f6e6d653a5f8f.png" alt="image405f6e6d653a5f8f.png"></a></p>
+<p>脚本内容</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义发送登录接口请求方法</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sendLoginRequest</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// 获取环境里的 前置URL</span></span><br><span class="line">  <span class="keyword">const</span> baseUrl = pm.<span class="property">environment</span>.<span class="title function_">get</span>(<span class="string">&quot;BASE_URL&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 登录用户名，这里从环境变量 LOGIN_USERNAME 获取，也可以写死（但是不建议）</span></span><br><span class="line">  <span class="keyword">const</span> username = pm.<span class="property">environment</span>.<span class="title function_">get</span>(<span class="string">&quot;LOGIN_USERNAME&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 登录密码，这里从环境变量 LOGIN_PASSWORD 获取，也可以写死（但是不建议）</span></span><br><span class="line">  <span class="keyword">const</span> password = pm.<span class="property">environment</span>.<span class="title function_">get</span>(<span class="string">&quot;LOGIN_PASSWORD&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 构造一个 POST  格式请求。这里需要改成你们实际登录接口的请求参数。</span></span><br><span class="line">  <span class="keyword">const</span> loginRequest = &#123;</span><br><span class="line">    <span class="attr">url</span>: baseUrl + <span class="string">&quot;/auth/login&quot;</span>,</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span><br><span class="line">    <span class="attr">header</span>: &#123;</span><br><span class="line">      <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json&quot;</span>, <span class="comment">// 注意：header 需要加上Content-Type</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">body</span>: &#123;</span><br><span class="line">      <span class="attr">mode</span>: <span class="string">&#x27;raw&#x27;</span>,<span class="comment">// 此处为 raw</span></span><br><span class="line">      <span class="attr">raw</span>: <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(&#123; <span class="string">&quot;userNo&quot;</span>: username, <span class="string">&quot;userPwd&quot;</span>:password &#125;), <span class="comment">// 序列化后的 json 字符串</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 发送请求。</span></span><br><span class="line">  <span class="comment">// pm.sendrequest 参考文档: https://www.apifox.cn/help/app/scripts/api-references/pm-reference/#pm-sendrequest</span></span><br><span class="line">  pm.<span class="title function_">sendRequest</span>(loginRequest, <span class="keyword">function</span>(<span class="params">err, res</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(err);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 读取接口返回的 json 数据。</span></span><br><span class="line">      <span class="comment">// 如果你的 token 信息是存放在 cookie 的，可以使用 res.cookies.get(&#x27;token&#x27;) 方式获取。</span></span><br><span class="line">      <span class="comment">// cookies 参考文档：https://www.apifox.cn/help/app/scripts/api-references/pm-reference/#pm-cookies</span></span><br><span class="line">      <span class="keyword">const</span> jsonData = res.<span class="title function_">json</span>();</span><br><span class="line">      <span class="comment">// 将 accessToken 写入环境变量 ACCESS_TOKEN</span></span><br><span class="line">      pm.<span class="property">environment</span>.<span class="title function_">set</span>(<span class="string">&quot;ACCESS_TOKEN&quot;</span>, jsonData.<span class="property">result</span>.<span class="property">token</span>);</span><br><span class="line">      <span class="comment">// 将 accessTokenExpires 过期时间写入环境变量 ACCESS_TOKEN_EXPIRES</span></span><br><span class="line">      pm.<span class="property">environment</span>.<span class="title function_">set</span>(</span><br><span class="line">        <span class="string">&quot;ACCESS_TOKEN_EXPIRES&quot;</span>,</span><br><span class="line">        jsonData.<span class="property">result</span>.<span class="property">tokenExpires</span></span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取环境变量里的 ACCESS_TOKEN</span></span><br><span class="line"><span class="keyword">const</span> accessToken = pm.<span class="property">environment</span>.<span class="title function_">get</span>(<span class="string">&quot;ACCESS_TOKEN&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取环境变量里的 ACCESS_TOKEN_EXPIRES</span></span><br><span class="line"><span class="keyword">const</span> accessTokenExpires = pm.<span class="property">environment</span>.<span class="title function_">get</span>(<span class="string">&quot;ACCESS_TOKEN_EXPIRES&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如 ACCESS_TOKEN 没有值，或 ACCESS_TOKEN_EXPIRES 已过期，则执行发送登录接口请求</span></span><br><span class="line"><span class="keyword">if</span> (</span><br><span class="line">  !accessToken ||</span><br><span class="line">  (accessTokenExpires &amp;&amp; <span class="keyword">new</span> <span class="title class_">Date</span>(accessTokenExpires) &lt;= <span class="keyword">new</span> <span class="title class_">Date</span>())</span><br><span class="line">) &#123;</span><br><span class="line">  <span class="title function_">sendLoginRequest</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="根目录前置操作"><a href="#根目录前置操作" class="headerlink" title="根目录前置操作"></a>根目录前置操作</h5><p>选择 <code>全自动登录实现公共脚本</code></p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.picgo.net/image/wb9wc"><img src="https://img.picgo.net/2023/04/23/image8945951dee1f7e89.png" alt="image8945951dee1f7e89.png"></a></p>
+<h5 id="全局参数"><a href="#全局参数" class="headerlink" title="全局参数"></a>全局参数</h5><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.picgo.net/image/w1Ww6"><img src="https://img.picgo.net/2023/04/23/imagec9523bf124e163d1.png" alt="imagec9523bf124e163d1.png"></a></p>
+<h5 id="环境变量-1"><a href="#环境变量-1" class="headerlink" title="环境变量"></a>环境变量</h5><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.picgo.net/image/w1XFq"><img src="https://img.picgo.net/2023/04/23/image04f9ba742f6b7641.png" alt="image04f9ba742f6b7641.png"></a></p>
+<h3 id="4-4-自动化测试"><a href="#4-4-自动化测试" class="headerlink" title="4.4 自动化测试"></a>4.4 自动化测试</h3><h4 id="4-4-1-测试用例-测试用例-Apifox-帮助文档"><a href="#4-4-1-测试用例-测试用例-Apifox-帮助文档" class="headerlink" title="4.4.1 [测试用例](测试用例 | Apifox 帮助文档)"></a>4.4.1 [测试用例](<a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/test-manage/test-case/#%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B">测试用例 | Apifox 帮助文档</a>)</h4><p><code>测试用例</code>是将多个<code>接口</code>有序地组合在一起运行，用来测试一个完整业务流程。</p>
+<h5 id="新建测试用例"><a href="#新建测试用例" class="headerlink" title="新建测试用例"></a>新建测试用例</h5><p>路径：自动化测试-测试用例</p>
+<p>点击<code>新建测试用例</code>，根据需要新建一个<code>测试用例</code>。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/test-case-1.bcb55d52.png"></p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/test-case-2.528ad9a4.png"></p>
+<h5 id="添加测试步骤"><a href="#添加测试步骤" class="headerlink" title="添加测试步骤"></a>添加测试步骤</h5><p>选中某个<code>测试用例</code>，进入编辑页面。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/test-case-3.71fbbae9.png"></p>
+<p>在测试用例的编辑页面，把鼠标移动到<code>添加步骤</code>上，会展示菜单。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/test-case-4.90da8653.png"></p>
+<p>添加用例有两种方式：<code>从接口导入</code>和<code>从接口用例导入 (推荐)</code></p>
+<ul>
+<li>从【接口】导入：根据接口参数自动生成一个用例，其参数值为空，需要手动填写。</li>
+<li>从【接口用例】导入：有两种模式<code>复制</code>和<code>绑定</code>。将接口用例以<code>复制</code>的方式导入，接口用例里的参数也会一同复制过来，和原来用例数据相互独立，各自改动后互不影响。将接口用例以<code>绑定</code>的方式导入，会直接引用原来的用例，两边的改动都会相互实时同步。</li>
+</ul>
+<blockquote>
+<p><strong>注意</strong></p>
+<ul>
+<li><code>从接口导入</code>后，需要手动设置接口参数，否则运行的时候，接口参数是空的。</li>
+<li><code>从接口用例导入</code>后，会同步导入接口用例里的参数，会方便很多。</li>
+</ul>
+</blockquote>
+<p><code>从接口用例导入</code>例图</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/test-case-5.243e4c5b.png"></p>
+<p><code>从接口导入</code>例图</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/test-case-6.6a8ca852.png"></p>
+<p>导入成功后，一定要记得点击<code>保存</code>哦。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/test-case-7.b440534a.png"></p>
+<blockquote>
+<p><strong>注意</strong></p>
+<ul>
+<li>导入的 <code>接口</code> 或 <code>接口用例</code> 在测试用例中作为一个 <code>测试步骤</code> 。<code>测试步骤</code> 是引用了 <code>接口</code> 或 <code>接口用例</code>，</li>
+<li>复制 <code>测试步骤</code>，是复制一个已经设置了绑定模式的 <code>测试步骤</code></li>
+</ul>
+</blockquote>
+<h5 id="运行测试用例"><a href="#运行测试用例" class="headerlink" title="运行测试用例"></a>运行测试用例</h5><p>点击<code>运行</code>，则进入<code>自动化测试</code>。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/test-case-8.9b4bba9f.png"></p>
+<h5 id="测试报告"><a href="#测试报告" class="headerlink" title="测试报告"></a>测试报告</h5><p><code>运行</code>完成后，如图所示，可以看到哪些接口没有通过测试，可以点击对应的接口展开详情；点击<code>更多详情</code>，可以查看该接口的运行结果，方便定位问题。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/test-case-9.8c0cddeb.png"></p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/light-apifox-test-case-4.a5247392.png"></p>
+<p>运行结束后可以从下面两个入口，查看之前的<code>测试报告</code>，也可以导出。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/test-case-11.f7b6f29e.png"></p>
+<h5 id="测试数据"><a href="#测试数据" class="headerlink" title="测试数据"></a>测试数据</h5><p>点击这里查看[测试数据](#4.4.2 测试数据)</p>
+<h5 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h5><p><strong>B 接口请求参数依赖于 A 接口返回的数据，如何实现？</strong></p>
+<p>使用<code>后置脚本</code>和<code>变量</code>（普通变量、环境变量或全局变量）。</p>
+<ol>
+<li><p>A 接口的用例里编写<code>后置脚本</code>，将接口请求返回的数据写入<code>变量</code>，示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取 JSON 格式的请求返回数据</span></span><br><span class="line"><span class="keyword">var</span> jsonData = pm.<span class="property">response</span>.<span class="title function_">json</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将 jsonData.token 的值写入变量</span></span><br><span class="line">pm.<span class="property">variables</span>.<span class="title function_">set</span>(<span class="string">&quot;token&quot;</span>, jsonData.<span class="property">token</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>B 接口对应的参数值，设置为对应的变量，如<code>&#123;&#123;token&#125;&#125;</code>，即可直接引用前面设置的变量<code>token</code>的值。</p>
+</li>
+</ol>
+<h4 id="4-4-2-测试数据-测试数据-Apifox-帮助文档"><a href="#4-4-2-测试数据-测试数据-Apifox-帮助文档" class="headerlink" title="4.4.2 [测试数据](测试数据 | Apifox 帮助文档)"></a>4.4.2 [测试数据](<a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/test-manage/test-data/#%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE">测试数据 | Apifox 帮助文档</a>)</h4><p><code>测试用例</code>和<code>测试套件</code>支持测试数据集。当用例或套件运行时，系统会循环运行数据文件里所有的数据集，并且会将数据集里的数据赋值给对应的变量。</p>
+<ol>
+<li>每个数据集可包含多个变量，接口运行时 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/api-manage/variables/">使用变量</a> 的地方会读取对应的值（变量优先级：临时变量 &gt; 测试数据变量 &gt; 环境变量 &gt; 全局变量）。</li>
+<li>可创建多个数据集，系统会遍历运行所有的数据集（每个数据集都会被运行一次）。</li>
+<li>数据集云端同步，成员之间共享测试数据。</li>
+<li>可根据不同环境设置不同的数据集。</li>
+</ol>
+<h5 id="编辑测试数据"><a href="#编辑测试数据" class="headerlink" title="编辑测试数据"></a>编辑测试数据</h5><p>打开测试用例或测试套件详情页就可以看到测试数据页。通过<code>添加数据集</code>、<code>批量编辑</code>、添加变量等直接编辑测试数据；点击<code>导入</code>可以导入本地<code>csv</code>文件的数据。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/test-data-1.932594fe.png"></p>
+<h5 id="使用测试数据"><a href="#使用测试数据" class="headerlink" title="使用测试数据"></a>使用测试数据</h5><p>测试步骤导入的接口或用例，通过引用变量的方式获取测试数据。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/test-data-2.4cc777cf.png"></p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/test-data-3.2de017cb.png"></p>
+<h5 id="运行测试数据"><a href="#运行测试数据" class="headerlink" title="运行测试数据"></a>运行测试数据</h5><p>在运行前需要打开<code>测试数据</code>的开关，再点击<code>运行</code></p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/test-data-5.fd978136.png"></p>
+<h5 id="常见问题-1"><a href="#常见问题-1" class="headerlink" title="常见问题"></a>常见问题</h5><p><strong>1. 中文导入后乱码的问题</strong></p>
+<p>是因为 windows 默认导出 csv 是 GBK，并且旧版本的 Excel 2016 前会不保存 Bom (byte order mark)。</p>
+<ul>
+<li>Windows 可以使用记事本打开 csv 文件后另存为 utf-8 格式。</li>
+<li>Mac 上可以使用 <code>iconv -f GBK -t UTF-8 xxx.csv &gt; utf-8.csv</code>。</li>
+</ul>
+<h4 id="4-4-3-性能测试"><a href="#4-4-3-性能测试" class="headerlink" title="4.4.3 性能测试"></a>4.4.3 性能测试</h4><p>性能测试有 3 种方式。</p>
+<h5 id="一、Apifox-应用内测试"><a href="#一、Apifox-应用内测试" class="headerlink" title="一、Apifox 应用内测试"></a>一、Apifox 应用内测试</h5><p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/performance.05bfe7c1.png"></p>
+<p>运行<code>测试用例</code>的时候，设置<code>线程数</code>大于<code>1</code>即可实现性能测试。</p>
+<p><code>线程数</code>即同时【并发】运行的线程数，每个线程都会按顺序运行选中的所有步骤。</p>
+<blockquote>
+<p><strong>注意</strong></p>
+<ol>
+<li>该功能为 beta 阶段，还在优化中，高并发测试建议导出 <strong>JMeter</strong> 文件的方式来测试。</li>
+</ol>
+</blockquote>
+<h5 id="二、Apifox-CLI-方式测试"><a href="#二、Apifox-CLI-方式测试" class="headerlink" title="二、Apifox CLI 方式测试"></a>二、Apifox CLI 方式测试</h5><p>Apifox CLI 是 Apifox 的命令行运行工具，主要用来做持续集成和压力测试，其压力测试功能目前正在开发中，敬请期待！</p>
+<h5 id="三、导出-JMeter-测试"><a href="#三、导出-JMeter-测试" class="headerlink" title="三、导出 JMeter 测试"></a>三、导出 JMeter 测试</h5><p><code>测试用例</code>和<code>测试套件</code>可以<strong>导出</strong><code>JMeter</code>格式数据，然后可以导入 <strong>JMeter</strong> 做性能测试。</p>
+<h4 id="4-4-4-测试流程控制"><a href="#4-4-4-测试流程控制" class="headerlink" title="4.4.4 测试流程控制"></a>4.4.4 测试流程控制</h4><p>借助测试流程控制，开发者可以在测试步骤中新增流程控制条件（循环、判断、等待、分组）等。进一步满足了更复杂的测试场景&#x2F;流程配置的使用， 最终借助自动化测试功能解决复杂场景的测试工作。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/test-process.1b7e9a4e.png"></p>
+<h5 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h5><p>当测试步骤需要重复执行时，可以通过设置循环次数来解决。同时，循环的附加设置中，支持自定义设置 <code>中断条件/遇到错误时</code> 判断。</p>
+<p>示例：宠物店店主在结束营业的晚上，登录宠物库存管理后台，将今日出售的10个宠物，分别进行详情查看并将它的在售状态变为已售出。</p>
+<ol>
+<li>点击底部的按钮「添加步骤」，并选择「循环」。</li>
+<li>输入需要的循环次数 10 。</li>
+</ol>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/test-process-1.d6991b97.png"></p>
+<ol start="3">
+<li>将该测试步骤拖入该条件下内框中（你也可在该条件下直接添加测试步骤）。</li>
+</ol>
+<h5 id="判断"><a href="#判断" class="headerlink" title="判断"></a>判断</h5><p>当测试流程中存在多条件判断时，可以通过添加判断条件（ If ）来区分流程执行的步骤。即当判断配置的条件满足时，该判断条件下的子步骤才会执行, 相反子步骤则会被跳过。</p>
+<p>示例：宠物店店主根据昨日宠物出售情况，若判断为售出，将该宠物的出售状态设置为“已售出”。否则( else )，查询在售中列表。</p>
+<ol>
+<li>点击底部的按钮「添加步骤」，并选择「条件分支」。</li>
+<li>在lf条件后面的输入框填写请求接口得到的变量 saleStatus ，然后选择条件”等于”，最后输入比较数值为 true。(当销售状态判断为 true 的时候，则更改宠物信息为「已售出」)</li>
+<li>将鼠标悬浮在该条件分支操作拦会出现「＋ Else 」，点击并新增「出售中的宠物列表」步骤（否则，即查询在售中的宠物列表。）。</li>
+<li>将测试步骤拖入到相应的条件分支中。</li>
+</ol>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/test-process-3.5b5d9eaa.png"></p>
+<h5 id="等待"><a href="#等待" class="headerlink" title="等待"></a>等待</h5><p>当测试流程中某个步骤需要执行后需要等待一段时间时，比如 A 步骤需要等待若干时间后再执行 B 步骤，可以通过新增等待条件来解决。</p>
+<p>示例：模拟用户查看宠物详情，浏览 1000ms 后，将该宠物详情信息中的浏览状态进行更新。</p>
+<ol>
+<li>点击底部的按钮「添加步骤」，并选择「等待」。</li>
+<li>点击底部的按钮「添加步骤」，并选择「等待」。</li>
+</ol>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/test-process-4.e59d6069.png"></p>
+<h5 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h5><p>当测试流程中多个步骤存在相关联关系时，可以进行归类并放入到同一个分组中。通过对测试步骤的分组，让测试用例具备更好的可读性和操作性。</p>
+<p>示例： 将查看详情宠物详情、修改宠物信息、再次查看详情等步骤归类成分组。</p>
+<ol>
+<li>点击底部的按钮「添加步骤」，并选择「分组」。</li>
+<li>将要归类的步骤，拖到分组步骤下或在分组中直接添加步骤。</li>
+</ol>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/test-process-5.b4898744.png"></p>
+<h3 id="4-5-导入-导出"><a href="#4-5-导入-导出" class="headerlink" title="4.5 导入\导出"></a>4.5 导入\导出</h3><h5 id="4-5-1-导入数据"><a href="#4-5-1-导入数据" class="headerlink" title="4.5.1 导入数据"></a>4.5.1 导入数据</h5><p>支持导入 <code>OpenApi (原Swagger)</code>、<code>Postman</code>、<code>HAR</code>、<code>RAML</code>、<code>RAP2</code>、<code>JMeter</code>、<code>YApi</code>、<code>Eolinker</code>、<code>NEI</code>、<code>DOClever</code>、<code>ApiPost</code> 、<code>Apizza</code> 、<code>DOCWAY</code>、<code>ShowDoc</code>、<code>apiDoc</code>、<code>I/O Docs</code>、<code>WADL</code>、<code>Google Discovery</code>等数据格式，方便旧项目迁移。</p>
+<p><strong>快速上手</strong></p>
+<h6 id="手动导入"><a href="#手动导入" class="headerlink" title="手动导入"></a>手动导入</h6><p>打开 <code>项目设置</code> 面板，点击 <code>手动导入</code> ，可选择文件导入或 URL 导入。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/import-1.bd4dfb35.png"></p>
+<p>以导入 Apifox 格式为例，导入可选内容包括：<code>接口、数据模型、环境、测试用例、测试套件</code></p>
+<blockquote>
+<p><strong>注意</strong></p>
+<ol>
+<li>导入 OpenAPI&#x2F;Swagger 格式只包含 <code>接口、数据模型、环境</code></li>
+<li>导入 Postman 格式只包含 <code>接口</code></li>
+</ol>
+</blockquote>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/import-2.e5e3fe7f.png"></p>
+<h6 id="手动导入-高级设置"><a href="#手动导入-高级设置" class="headerlink" title="手动导入-高级设置"></a>手动导入-高级设置</h6><p><strong>匹配相同接口时</strong></p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/import-swagger-6.3e37c2cb.png"></p>
+<ul>
+<li>覆盖所有字段：当两个接口的接口唯一标识相同时，新文件会覆盖旧文件</li>
+<li>不导入：当两个接口的接口唯一标识相同时，新文件不会导入</li>
+<li>保留两者：当两个接口的接口唯一标识相同时，新文件会导入，旧文件不会被删除</li>
+</ul>
+<p><strong>匹配相同文档时</strong></p>
+<ul>
+<li>覆盖：当两个文档名称相同时，新文件会覆盖旧文件</li>
+<li>不导入：当两个文档名称相同时，新文件不会导入</li>
+<li>保留两者：当两个文档名称相同时，新文件会导入，旧文件不会被删除</li>
+</ul>
+<p><strong>导入到目录</strong></p>
+<p>支持将文件导入到具体的目录中</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/import-swagger-7.76dbbe04.png"></p>
+<p><strong>导入接口用例</strong></p>
+<p>开启开关后，已选择接口下的<code>接口用例</code>默认全选，也可以在 <code>导入预览</code> 中选择对应 <code>接口用例</code></p>
+<blockquote>
+<p>当导入非 Apifox 格式文件，且接口文档覆盖时，名称相同的 <code>接口用例</code> 不会导入，不同名称的 <code>接口用例</code> 会新增。<br>当导入 Apifox 格式文件，且接口文档覆盖时，名称相同的 <code>接口用例</code> 会覆盖，不同名称的 <code>接口用例</code> 会新增。</p>
+</blockquote>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/import-swagger-8.13f067b8.png"></p>
+<h6 id="自动导入"><a href="#自动导入" class="headerlink" title="自动导入"></a>自动导入</h6><p>打开<code>项目设置</code>面板，点击<code>自动导入</code>，可设置<code>多个数据源</code>，定时同步到<code>具体分组</code>中</p>
+<blockquote>
+<p><strong>注意</strong></p>
+<p>只有角色为管理员，且打开客户端的时候，才会按照设置的导入频率 <code>自动导入</code> 。</p>
+<p>其他角色不会触发<code>自动导入</code> 。</p>
+</blockquote>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/import-swagger-4.3fe2eea5.png"></p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/import-swagger-5.e442fcd4.png"></p>
+<h6 id="主界面快速导入"><a href="#主界面快速导入" class="headerlink" title="主界面快速导入"></a>主界面快速导入</h6><p>在 2.2.27 版本之后，支持在主界面（项目列表页）快速导入数据。可以选择导入到新项目，或导入到已有项目。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/import-9.3d592c1c.png"></p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/import-10.95c249c0.png"></p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/import-11.27dd3ab7.png"></p>
+<h6 id="导入不同数据源"><a href="#导入不同数据源" class="headerlink" title="导入不同数据源"></a>导入不同数据源</h6><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/import/#%E5%AF%BC%E5%85%A5%E4%B8%8D%E5%90%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E6%BA%90">导入数据 | Apifox 帮助文档</a></p>
+<h5 id="4-5-2-导出数据"><a href="#4-5-2-导出数据" class="headerlink" title="4.5.2 导出数据"></a>4.5.2 导出数据</h5><ol>
+<li>支持直接导出 <code>OpenAPI (原Swagger)</code>、<code>HTML</code>、<code>Markdown</code>、<code>Apifox</code>等数据格式。</li>
+<li><code>OpenAPI (Swagger)</code> 支持导出 <code>3.1</code>、<code>3.0</code>、<code>2.0</code> 版本。</li>
+<li><code>OpenAPI (Swagger)</code> 支持导出离线文件，或直接打开 URL。</li>
+</ol>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/export-1.60e8c5db.png"></p>
+<blockquote>
+<p><strong>导出 PDF 方法</strong></p>
+<p>目前还不支持直接导出 <code>PDF</code>、<code>Word</code> 等其他格式数据，但可使用外部工具将<code>Markdown</code>转为对应格式。</p>
+<p>如使用 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://mdnice.com/">Mdnice</a> 即可将 <code>Markdown</code> 导出为 <code>PDF</code>格式。</p>
+</blockquote>
+<blockquote>
+<p><strong>常见问题</strong></p>
+<ul>
+<li><strong>导出 Markdown、HTML 格式时接口顺序为什么乱了？</strong></li>
+</ul>
+<ol>
+<li>Swagger 规范里是没有顺序的概念的，也没有分组的概念，规范本身不支持，所以导出 Swagger 格式是错乱的。</li>
+<li>html 和 markdown 都是用 swagger 转制的，同样存在问题。</li>
+<li>如果需要顺序的话，建议选择 apifox 格式导出</li>
+</ol>
+<ul>
+<li><strong>多个同 URL 接口，导出后只有一个？</strong> <strong>导出的接口数量为什么变少了？</strong></li>
+</ul>
+<ol>
+<li>请检查是否有多个接口都是使用相同的方法和路径。</li>
+<li>OpenAPI 规范是不支持不同接口使用相同方法和路径的。如存在多个接口使用相同方法和路径的情况，请查看 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/app/api-manage/api-unique-id/">接口唯一标识</a></li>
+<li>目前导出<code>HTML</code>、<code>Markdown</code>是通过 OpenAPI 数据转译的。同样存在问题。</li>
+</ol>
+</blockquote>
+<p><strong>快速上手</strong></p>
+<p>打开<code>项目设置</code>面板，点击<code>导出</code>即可使用导出数据功能。</p>
+<p>支持导出全部，也可以导出部分接口，如图，可以根据需要选择对应的接口，并支持搜索与筛选。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/export-2.c4d376e6.png"></p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/export-3.42f20176.png"></p>
+<p>支持根据标签来导出对应的接口</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/export-4.17ed8be4.png"></p>
+<h3 id="4-6-生成代码"><a href="#4-6-生成代码" class="headerlink" title="4.6 生成代码"></a>4.6 生成代码</h3><p><strong>功能说明</strong></p>
+<p>根据接口模型定义，自动生成各种语言&#x2F;框架（如 TypeScript、Java、Go、Swift、ObjectiveC、Kotlin、Dart、C++、C#、Rust 等 130 种语言及框架）的业务代码（如 Model、Controller、单元测试代码等）和接口请求代码。目前 Apifox 支持 130 种语言及框架的代码自动生成。</p>
+<p>更重要的是：你可以通过<code>自定义代码模板</code>来生成符合自己团队的架构规范的代码，满足各种个性化的需求。</p>
+<h4 id="接口文档的代码生成"><a href="#接口文档的代码生成" class="headerlink" title="接口文档的代码生成"></a>接口文档的代码生成</h4><p>可以在接口文档-文档页，接口文档-运行页、接口用例，根据需要选择 <code>生成接口请求代码</code>、<code>生成完整项目代码</code>。</p>
+<h5 id="接口文档-文档页"><a href="#接口文档-文档页" class="headerlink" title="接口文档-文档页"></a><strong>接口文档-文档页</strong></h5><p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/code-generator-1.92701d13.png"></p>
+<h5 id="接口文档-运行页"><a href="#接口文档-运行页" class="headerlink" title="接口文档-运行页"></a><strong>接口文档-运行页</strong></h5><p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/code-generator-2.37d4a0e7.png"></p>
+<h5 id="接口用例"><a href="#接口用例" class="headerlink" title="接口用例"></a><strong>接口用例</strong></h5><p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/code-generator-3.4bfaa5f6.png"></p>
+<h4 id="数据模型的代码生成"><a href="#数据模型的代码生成" class="headerlink" title="数据模型的代码生成"></a>数据模型的代码生成</h4><p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/code-generator-6.6ec77e9d.png"></p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/code-generator-7.06747249.png"></p>
+<h4 id="数据模型的生成-SQL-建表语句"><a href="#数据模型的生成-SQL-建表语句" class="headerlink" title="数据模型的生成 SQL 建表语句"></a>数据模型的生成 SQL 建表语句</h4><p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/code-generator-8.8c7de13f.png"></p>
+<h3 id="4-7-分享-amp-发布文档"><a href="#4-7-分享-amp-发布文档" class="headerlink" title="4.7 分享 &amp; 发布文档"></a>4.7 分享 &amp; 发布文档</h3><p>在 API 开发、沟通、协作中，逻辑上是以 API 文档为标准的，但实际操作中，存在以 Word、PDF 格式的文件传来传去的问题。为此我们提倡以 <code>在线文档</code> 的形式，提高团队之间的沟通效率</p>
+<h4 id="分享在线文档"><a href="#分享在线文档" class="headerlink" title="分享在线文档"></a>分享在线文档</h4><p>在软件界面左侧，就可以设置当前项目的<code>在线文档</code></p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/online-docs-1.9b8f4e52.png"></p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/online-docs-1-1.ad5073cc.png"></p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/online-docs-2.343e7ce4.png"></p>
+<p>点击新建分享，就可以根据需要，设置分享的信息内容：</p>
+<ul>
+<li>文档语言</li>
+<li>访问密码</li>
+<li>分享在线文档的日期</li>
+<li>分享范围：可以选择项目全部，也可以选择部分接口，也可以根据标签维度导入</li>
+<li>运行环境：可以选择运行的环境，和显示对应的前置 URL。选择后，分享出去的在线接口文档支持运行调试</li>
+<li>可以显示接口文档对应的责任人、修改时间、前置 URL</li>
+</ul>
+<blockquote>
+<p><strong>整目录分享</strong></p>
+<p>在线文档支持<code>整目录分享功能</code>，选择对应的分组打开整目录分享，则该分组在修改后会自动同步到在线文档。当然如果您不希望在线文档实时同步您的修改，可以选择不开启。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/online-docs-4.a8b84819.png"></p>
+</blockquote>
+<p>设置完成后，复制链接，就可以分享给团队成员了</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/online-docs-3.28243a6b.png"></p>
+<h4 id="查看在线文档"><a href="#查看在线文档" class="headerlink" title="查看在线文档"></a>查看在线文档</h4><p><code>在线文档</code>查看过程中，支持复制接口 URL、数据接口字段、返回示例字段</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/online-docs-5.818ec80c.png"></p>
+<h4 id="在线文档支持修改环境变量"><a href="#在线文档支持修改环境变量" class="headerlink" title="在线文档支持修改环境变量"></a>在线文档支持修改环境变量</h4><p>前提条件：当设置 <code>在线分享</code> 时，需要设置接口引用了 <code>环境变量</code> 的环境</p>
+<p>在线文档调试接口时，会存在修改接口文档引用的 <code>环境变量</code> 的场景，现在可以根据下图，修改 <code>环境变量</code> 并运行调试</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/online-docs-12.7ff7afb5.png"></p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/online-docs-13.f6cca449.png"></p>
+<h4 id="在线文档支持显示示例代码"><a href="#在线文档支持显示示例代码" class="headerlink" title="在线文档支持显示示例代码"></a>在线文档支持显示示例代码</h4><p>分享出去的 <code>在线接口文档</code> 支持显示示例代码，当然 API Hub 也是支持的。您可以直接复制当前接口的代码，直接使用。</p>
+<p><img src="https://cdn.apifox.cn/mirror-www-com/help/assets/online-docs-11.57488a0a.png"></p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/">帮助中心 | Apifox 帮助文档</a></p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://apifox.com/help/ide-plugin/idea-plugin/quickstart/practice/">Apifox IDEA 插件快速上手 | Apifox 帮助文档</a></p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.csdn.net/Mango_Bin/article/details/123043284">开发工具：让前后端联调不再争吵——Apifox_apifox前后端联调_ABin-阿斌的博客-CSDN博客</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://532763233.github.io">槐序拾肆</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://532763233.github.io/archives/1.html">https://532763233.github.io/archives/1.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://532763233.github.io" target="_blank">EraiBlog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Apifox/">Apifox</a><a class="post-meta__tags" href="/tags/IDEA-Plugin/">IDEA Plugin</a></div><div class="post_share"><div class="social-share" data-image="https://img.picgo.net/2023/05/05/image693f3717317fd443.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/./img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/./img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/./img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/./img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/archives/514341f5.html" title="WebStorm安装使用"><img class="cover" src="https://img.picgo.net/2023/05/06/image0a18d47c1468b559.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">WebStorm安装使用</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/./img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">槐序拾肆</div><div class="author-info__description">欢迎访问EraiBlog!</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/532763233"><i class="fab fa-github"></i><span>关注我!</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/532763233" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:532763233@qq.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #24292e;"></i></a><a class="social-icon" href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=532763233&amp;website=www.oicqzone.com" rel="external nofollow noreferrer" target="_blank" title="QQ"><i class="fab fa-qq" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/15670091?spm_id_from=333.1007.0.0" rel="external nofollow noreferrer" target="_blank" title="Bilibili"><i class="fab fa-bilibili" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到EraiBlog!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Apifox%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B"><span class="toc-number">1.</span> <span class="toc-text">Apifox快速上手</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%A2%E9%98%9F%E5%8E%9F%E6%9D%A5%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">团队原来的工作模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.0.2.</span> <span class="toc-text">存在的问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3"><span class="toc-number">1.1.1.</span> <span class="toc-text">如何解决</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">最佳实践</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%AE%89%E8%A3%85%E8%BF%90%E8%A1%8CApifox"><span class="toc-number">1.2.</span> <span class="toc-text">一.安装运行Apifox</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.1安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2%E6%89%AB%E7%A0%81%E6%B3%A8%E5%86%8C%E7%99%BB%E5%BD%95"><span class="toc-number">1.2.2.</span> <span class="toc-text">1.2扫码注册登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3%E5%8A%A0%E5%85%A5%E5%9B%A2%E9%98%9F"><span class="toc-number">1.2.3.</span> <span class="toc-text">1.3加入团队</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4%E5%AE%8C%E6%88%90"><span class="toc-number">1.2.4.</span> <span class="toc-text">1.4完成</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-IDEA%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">二.IDEA插件安装使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.3.1.</span> <span class="toc-text">2.1 介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%8A%9F%E8%83%BD%E7%89%B9%E6%80%A7"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.2 功能特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%AE%89%E8%A3%85"><span class="toc-number">1.3.3.</span> <span class="toc-text">2.3 安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8E-IDEA-plugins-%E4%B8%AD%E6%90%9C%E7%B4%A2%E5%AE%89%E8%A3%85"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">从 IDEA plugins 中搜索安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E8%8E%B7%E5%8F%96%E9%A1%B9%E7%9B%AEID"><span class="toc-number">1.3.4.</span> <span class="toc-text">2.4 获取项目ID</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5%E8%8E%B7%E5%8F%96%E8%AE%BF%E9%97%AE%E4%BB%A4%E7%89%8C"><span class="toc-number">1.3.5.</span> <span class="toc-text">2.5获取访问令牌</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE"><span class="toc-number">1.3.6.</span> <span class="toc-text">2.6基础配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7%E5%90%8C%E6%AD%A5%E6%8E%A5%E5%8F%A3%E5%88%B0-Apifox"><span class="toc-number">1.3.7.</span> <span class="toc-text">2.7同步接口到 Apifox</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5%E6%A8%A1%E5%9D%97%E5%86%85%E6%89%80%E6%9C%89%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.3.7.1.</span> <span class="toc-text">同步模块内所有接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5-controller-%E6%96%87%E4%BB%B6%E5%86%85%E6%89%80%E6%9C%89%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.3.7.2.</span> <span class="toc-text">同步 controller 文件内所有接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5%E9%80%89%E6%8B%A9%E9%83%A8%E5%88%86%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.3.7.3.</span> <span class="toc-text">同步选择部分接口</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-Apifox%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.4.</span> <span class="toc-text">三.Apifox介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Apifox-%E5%AE%9A%E4%BD%8D"><span class="toc-number">1.4.1.</span> <span class="toc-text">3.1 Apifox 定位</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Apifox-x3D-Postman-Swagger-Mock-JMeter"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">Apifox &#x3D; Postman + Swagger + Mock + JMeter</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Apifox-%E5%AE%97%E6%97%A8"><span class="toc-number">1.4.2.</span> <span class="toc-text">3.2 Apifox 宗旨</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-Apifox-%E5%8A%9F%E8%83%BD"><span class="toc-number">1.4.3.</span> <span class="toc-text">3.3 Apifox 功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-Apifox%E7%AE%80%E6%98%93%E4%BD%BF%E7%94%A8"><span class="toc-number">1.5.</span> <span class="toc-text">四.Apifox简易使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E7%95%8C%E9%9D%A2%E6%A6%82%E8%A7%88"><span class="toc-number">1.5.1.</span> <span class="toc-text">4.1 界面概览</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E6%A6%82%E8%A7%88%E9%A1%B5"><span class="toc-number">1.5.1.1.</span> <span class="toc-text">接口概览页</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1%E7%95%8C%E9%9D%A2"><span class="toc-number">1.5.1.2.</span> <span class="toc-text">接口设计界面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E8%BF%90%E8%A1%8C%E7%95%8C%E9%9D%A2"><span class="toc-number">1.5.1.3.</span> <span class="toc-text">接口运行界面</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86"><span class="toc-number">1.5.2.</span> <span class="toc-text">4.2 接口管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-1-%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1-%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1-%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3-Apifox-%E5%B8%AE%E5%8A%A9%E6%96%87%E6%A1%A3"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">4.2.1 [接口设计](接口设计 (接口文档) | Apifox 帮助文档)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B"><span class="toc-number">1.5.2.1.1.</span> <span class="toc-text">快速上手</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E8%B7%AF%E5%BE%84"><span class="toc-number">1.5.2.1.2.</span> <span class="toc-text">接口路径</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0"><span class="toc-number">1.5.2.1.3.</span> <span class="toc-text">请求参数</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Params-%E5%8F%82%E6%95%B0"><span class="toc-number">1.5.2.1.3.1.</span> <span class="toc-text">Params 参数</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Body-%E5%8F%82%E6%95%B0"><span class="toc-number">1.5.2.1.3.2.</span> <span class="toc-text">Body 参数</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E4%B8%AD%E4%BD%BF%E7%94%A8%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%88%E6%88%96%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F-x2F-%E4%B8%B4%E6%97%B6%E5%8F%98%E9%87%8F%EF%BC%89"><span class="toc-number">1.5.2.1.4.</span> <span class="toc-text">参数中使用环境变量（或全局变量&#x2F;临时变量）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%93%8D%E5%BA%94"><span class="toc-number">1.5.2.1.5.</span> <span class="toc-text">返回响应</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%AC%E5%85%B1%E5%93%8D%E5%BA%94"><span class="toc-number">1.5.2.1.6.</span> <span class="toc-text">公共响应</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-2-%E6%8E%A5%E5%8F%A3%E8%B0%83%E8%AF%95-%E6%8E%A5%E5%8F%A3%E8%B0%83%E8%AF%95-x2F-%E6%8E%A5%E5%8F%A3%E7%94%A8%E4%BE%8B-Apifox-%E5%B8%AE%E5%8A%A9%E6%96%87%E6%A1%A3"><span class="toc-number">1.5.2.2.</span> <span class="toc-text">4.2.2 [接口调试](接口调试 &#x2F; 接口用例 | Apifox 帮助文档)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B-1"><span class="toc-number">1.5.2.2.1.</span> <span class="toc-text">快速上手</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BF%9D%E5%AD%98%E4%B8%BA%E7%94%A8%E4%BE%8B"><span class="toc-number">1.5.2.2.2.</span> <span class="toc-text">保存为用例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9A%82%E5%AD%98"><span class="toc-number">1.5.2.2.3.</span> <span class="toc-text">暂存</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E6%93%8D%E4%BD%9C-x2F-%E5%90%8E%E7%BD%AE%E6%93%8D%E4%BD%9C"><span class="toc-number">1.5.2.2.4.</span> <span class="toc-text">前置操作&#x2F;后置操作</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%96%AD%E8%A8%80"><span class="toc-number">1.5.2.2.4.1.</span> <span class="toc-text">断言</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%8F%90%E5%8F%96%E5%8F%98%E9%87%8F"><span class="toc-number">1.5.2.2.4.2.</span> <span class="toc-text">提取变量</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%A1%E9%AA%8C%E5%93%8D%E5%BA%94"><span class="toc-number">1.5.2.2.5.</span> <span class="toc-text">校验响应</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-3-%E5%BF%AB%E6%8D%B7%E8%AF%B7%E6%B1%82-%E5%BF%AB%E6%8D%B7%E8%AF%B7%E6%B1%82-Apifox-%E5%B8%AE%E5%8A%A9%E6%96%87%E6%A1%A3"><span class="toc-number">1.5.2.3.</span> <span class="toc-text">4.2.3 [快捷请求](快捷请求 | Apifox 帮助文档)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E9%BC%A0%E6%A0%87%E7%A7%BB%E5%88%B0%E5%B7%A6%E4%BE%A7%E6%90%9C%E7%B4%A2%E6%A1%86%E6%97%81%E8%BE%B9%E7%9A%84-%E5%8F%B7%E6%8C%89%E9%92%AE%EF%BC%8C%E5%9C%A8%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8%E9%87%8C%E9%80%89%E6%8B%A9%E5%BF%AB%E6%8D%B7%E8%AF%B7%E6%B1%82%EF%BC%8C%E4%B9%9F%E5%8F%AF%E4%BD%BF%E7%94%A8-%E5%BF%AB%E6%8D%B7%E9%94%AE%EF%BC%9ACtrl-%E2%8C%98-T%E3%80%82"><span class="toc-number">1.5.2.3.1.</span> <span class="toc-text">1.鼠标移到左侧搜索框旁边的 + 号按钮，在下拉列表里选择快捷请求，也可使用 快捷键：Ctrl(⌘) + T。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E9%BC%A0%E6%A0%87%E7%A7%BB%E5%8A%A8%E5%88%B0%E5%B7%A6%E4%BE%A7%E7%9B%AE%E5%BD%95%E4%B8%AD%EF%BC%8C%E5%9C%A8%E5%BF%AB%E6%8D%B7%E8%AF%B7%E6%B1%82%E5%8F%B3%E8%BE%B9%E7%82%B9%E5%87%BB-%E5%8F%B7%E6%8C%89%E9%92%AE%EF%BC%8C%E4%B9%9F%E5%8F%AF%E6%96%B0%E5%BB%BA%E5%BF%AB%E6%8D%B7%E8%AF%B7%E6%B1%82"><span class="toc-number">1.5.2.3.2.</span> <span class="toc-text">2.鼠标移动到左侧目录中，在快捷请求右边点击 + 号按钮，也可新建快捷请求</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E8%BE%93%E5%85%A5%E6%8E%A5%E5%8F%A3-URL-%E5%8F%8A%E5%8F%82%E6%95%B0%EF%BC%8C%E5%8D%B3%E5%8F%AF%E5%BF%AB%E9%80%9F%E8%AF%B7%E6%B1%82%E6%8E%A5%E5%8F%A3%EF%BC%88%E5%A6%82%E6%9E%9C%E8%BE%93%E5%85%A5%E7%9A%84-URL-%E4%B8%8D%E6%98%AF%E4%BB%A5http-%E6%88%96https-%E8%B5%B7%E5%A7%8B%EF%BC%8C%E5%AE%9E%E9%99%85%E5%8F%91%E5%87%BA%E8%AF%B7%E6%B1%82%E7%9A%84%E6%97%B6%E5%80%99%E4%BC%9A%E8%87%AA%E5%8A%A8%E5%8A%A0%E4%B8%8A%E5%BD%93%E5%89%8D%E7%8E%AF%E5%A2%83%E9%87%8C%E5%89%8D%E7%BD%AE-URL%E3%80%82%EF%BC%89"><span class="toc-number">1.5.2.3.3.</span> <span class="toc-text">3.输入接口 URL 及参数，即可快速请求接口（如果输入的 URL 不是以http:&#x2F;&#x2F;或https:&#x2F;&#x2F;起始，实际发出请求的时候会自动加上当前环境里前置 URL。）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-%E8%B0%83%E8%AF%95%E5%AE%8C%E6%88%90%E5%90%8E%EF%BC%8C%E5%8F%AF%E4%BB%A5%E4%BF%9D%E5%AD%98%E4%B8%BA%E5%BF%AB%E6%8D%B7%E8%AF%B7%E6%B1%82%E6%88%96%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3"><span class="toc-number">1.5.2.3.4.</span> <span class="toc-text">4.调试完成后，可以保存为快捷请求或接口文档</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-%E5%9C%A8%E5%B7%A6%E4%BE%A7%E7%9B%AE%E5%BD%95%E5%8F%AF%E4%BB%A5%E7%AE%A1%E7%90%86%E5%B7%B2%E4%BF%9D%E5%AD%98%E7%9A%84%E5%BF%AB%E6%8D%B7%E8%AF%B7%E6%B1%82"><span class="toc-number">1.5.2.3.5.</span> <span class="toc-text">5.在左侧目录可以管理已保存的快捷请求</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-%E5%BF%AB%E6%8D%B7%E8%AF%B7%E6%B1%82-%E6%94%AF%E6%8C%81-%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81%EF%BC%8C%E8%AF%A6%E6%83%85%E8%AF%B7%E8%A7%81-%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81"><span class="toc-number">1.5.2.3.6.</span> <span class="toc-text">6.快捷请求 支持 生成代码，详情请见 生成代码</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-4-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-x2F-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-x2F-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B-Apifox-%E5%B8%AE%E5%8A%A9%E6%96%87%E6%A1%A3"><span class="toc-number">1.5.2.4.</span> <span class="toc-text">4.2.4 [数据结构 &#x2F; 数据模型](数据结构 &#x2F; 数据模型 | Apifox 帮助文档)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">1.5.2.4.1.</span> <span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">1.5.2.4.2.</span> <span class="toc-text">编辑数据结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.5.2.4.3.</span> <span class="toc-text">数据模型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%BC%95%E7%94%A8"><span class="toc-number">1.5.2.4.4.</span> <span class="toc-text">数据模型的引用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81"><span class="toc-number">1.5.2.4.5.</span> <span class="toc-text">生成代码</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-5-%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86-%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86-Apifox-%E5%B8%AE%E5%8A%A9%E6%96%87%E6%A1%A3"><span class="toc-number">1.5.2.5.</span> <span class="toc-text">4.2.5 [环境管理](环境管理 | Apifox 帮助文档)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83"><span class="toc-number">1.5.2.5.1.</span> <span class="toc-text">设置环境</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%EF%BC%88%E5%89%8D%E7%BD%AEURL%EF%BC%89"><span class="toc-number">1.5.2.5.2.</span> <span class="toc-text">服务（前置URL）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-6-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-x2F-%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F-x2F-%E4%B8%B4%E6%97%B6%E5%8F%98%E9%87%8F-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-x2F-%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F-x2F-%E4%B8%B4%E6%97%B6%E5%8F%98%E9%87%8F-Apifox-%E5%B8%AE%E5%8A%A9%E6%96%87%E6%A1%A3"><span class="toc-number">1.5.2.6.</span> <span class="toc-text">4.2.6 [环境变量 &#x2F; 全局变量 &#x2F; 临时变量](环境变量 &#x2F; 全局变量 &#x2F; 临时变量 | Apifox 帮助文档)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B-2"><span class="toc-number">1.5.2.6.1.</span> <span class="toc-text">快速上手</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%80%BC%E5%92%8C%E8%BF%9C%E7%A8%8B%E5%80%BC%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.5.2.6.2.</span> <span class="toc-text">本地值和远程值的区别</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.5.2.6.3.</span> <span class="toc-text">变量类型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F"><span class="toc-number">1.5.2.6.4.</span> <span class="toc-text">使用变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-number">1.5.2.6.5.</span> <span class="toc-text">变量优先级</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F"><span class="toc-number">1.5.2.6.6.</span> <span class="toc-text">脚本中使用变量</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">1.5.2.6.6.1.</span> <span class="toc-text">环境变量</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="toc-number">1.5.2.6.6.2.</span> <span class="toc-text">全局变量</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%B4%E6%97%B6%E5%8F%98%E9%87%8F"><span class="toc-number">1.5.2.6.6.3.</span> <span class="toc-text">临时变量</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-7-%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E5%8E%86%E5%8F%B2-%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E5%8E%86%E5%8F%B2-Apifox-%E5%B8%AE%E5%8A%A9%E6%96%87%E6%A1%A3"><span class="toc-number">1.5.2.7.</span> <span class="toc-text">4.2.7 [接口修改历史](接口修改历史 | Apifox 帮助文档)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B-3"><span class="toc-number">1.5.2.7.1.</span> <span class="toc-text">快速上手</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E5%85%A8%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.5.3.</span> <span class="toc-text">4.3 全自动登录实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF"><span class="toc-number">1.5.3.1.</span> <span class="toc-text">实现思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%88%E4%BB%A5lsh-plat%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="toc-number">1.5.3.2.</span> <span class="toc-text">示例（以lsh-plat为例）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%AC%E5%85%B1%E8%84%9A%E6%9C%AC"><span class="toc-number">1.5.3.2.1.</span> <span class="toc-text">公共脚本</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%89%8D%E7%BD%AE%E6%93%8D%E4%BD%9C"><span class="toc-number">1.5.3.2.2.</span> <span class="toc-text">根目录前置操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%8F%82%E6%95%B0"><span class="toc-number">1.5.3.2.3.</span> <span class="toc-text">全局参数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-1"><span class="toc-number">1.5.3.2.4.</span> <span class="toc-text">环境变量</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95"><span class="toc-number">1.5.4.</span> <span class="toc-text">4.4 自动化测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-1-%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B-%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B-Apifox-%E5%B8%AE%E5%8A%A9%E6%96%87%E6%A1%A3"><span class="toc-number">1.5.4.1.</span> <span class="toc-text">4.4.1 [测试用例](测试用例 | Apifox 帮助文档)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B"><span class="toc-number">1.5.4.1.1.</span> <span class="toc-text">新建测试用例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E6%B5%8B%E8%AF%95%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.5.4.1.2.</span> <span class="toc-text">添加测试步骤</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B"><span class="toc-number">1.5.4.1.3.</span> <span class="toc-text">运行测试用例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A"><span class="toc-number">1.5.4.1.4.</span> <span class="toc-text">测试报告</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE"><span class="toc-number">1.5.4.1.5.</span> <span class="toc-text">测试数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">1.5.4.1.6.</span> <span class="toc-text">常见问题</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-2-%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE-%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE-Apifox-%E5%B8%AE%E5%8A%A9%E6%96%87%E6%A1%A3"><span class="toc-number">1.5.4.2.</span> <span class="toc-text">4.4.2 [测试数据](测试数据 | Apifox 帮助文档)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE"><span class="toc-number">1.5.4.2.1.</span> <span class="toc-text">编辑测试数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE"><span class="toc-number">1.5.4.2.2.</span> <span class="toc-text">使用测试数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE"><span class="toc-number">1.5.4.2.3.</span> <span class="toc-text">运行测试数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98-1"><span class="toc-number">1.5.4.2.4.</span> <span class="toc-text">常见问题</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-3-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-number">1.5.4.3.</span> <span class="toc-text">4.4.3 性能测试</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E3%80%81Apifox-%E5%BA%94%E7%94%A8%E5%86%85%E6%B5%8B%E8%AF%95"><span class="toc-number">1.5.4.3.1.</span> <span class="toc-text">一、Apifox 应用内测试</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Apifox-CLI-%E6%96%B9%E5%BC%8F%E6%B5%8B%E8%AF%95"><span class="toc-number">1.5.4.3.2.</span> <span class="toc-text">二、Apifox CLI 方式测试</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AF%BC%E5%87%BA-JMeter-%E6%B5%8B%E8%AF%95"><span class="toc-number">1.5.4.3.3.</span> <span class="toc-text">三、导出 JMeter 测试</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-4-%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="toc-number">1.5.4.4.</span> <span class="toc-text">4.4.4 测试流程控制</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF"><span class="toc-number">1.5.4.4.1.</span> <span class="toc-text">循环</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%A4%E6%96%AD"><span class="toc-number">1.5.4.4.2.</span> <span class="toc-text">判断</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AD%89%E5%BE%85"><span class="toc-number">1.5.4.4.3.</span> <span class="toc-text">等待</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%86%E7%BB%84"><span class="toc-number">1.5.4.4.4.</span> <span class="toc-text">分组</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-%E5%AF%BC%E5%85%A5-%E5%AF%BC%E5%87%BA"><span class="toc-number">1.5.5.</span> <span class="toc-text">4.5 导入\导出</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-5-1-%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="toc-number">1.5.5.0.1.</span> <span class="toc-text">4.5.1 导入数据</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E5%AF%BC%E5%85%A5"><span class="toc-number">1.5.5.0.1.1.</span> <span class="toc-text">手动导入</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E5%AF%BC%E5%85%A5-%E9%AB%98%E7%BA%A7%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.5.5.0.1.2.</span> <span class="toc-text">手动导入-高级设置</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%85%A5"><span class="toc-number">1.5.5.0.1.3.</span> <span class="toc-text">自动导入</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%BB%E7%95%8C%E9%9D%A2%E5%BF%AB%E9%80%9F%E5%AF%BC%E5%85%A5"><span class="toc-number">1.5.5.0.1.4.</span> <span class="toc-text">主界面快速导入</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E4%B8%8D%E5%90%8C%E6%95%B0%E6%8D%AE%E6%BA%90"><span class="toc-number">1.5.5.0.1.5.</span> <span class="toc-text">导入不同数据源</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-5-2-%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE"><span class="toc-number">1.5.5.0.2.</span> <span class="toc-text">4.5.2 导出数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81"><span class="toc-number">1.5.6.</span> <span class="toc-text">4.6 生成代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%E7%9A%84%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90"><span class="toc-number">1.5.6.1.</span> <span class="toc-text">接口文档的代码生成</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3-%E6%96%87%E6%A1%A3%E9%A1%B5"><span class="toc-number">1.5.6.1.1.</span> <span class="toc-text">接口文档-文档页</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3-%E8%BF%90%E8%A1%8C%E9%A1%B5"><span class="toc-number">1.5.6.1.2.</span> <span class="toc-text">接口文档-运行页</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E7%94%A8%E4%BE%8B"><span class="toc-number">1.5.6.1.3.</span> <span class="toc-text">接口用例</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90"><span class="toc-number">1.5.6.2.</span> <span class="toc-text">数据模型的代码生成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%94%9F%E6%88%90-SQL-%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.5.6.3.</span> <span class="toc-text">数据模型的生成 SQL 建表语句</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-7-%E5%88%86%E4%BA%AB-amp-%E5%8F%91%E5%B8%83%E6%96%87%E6%A1%A3"><span class="toc-number">1.5.7.</span> <span class="toc-text">4.7 分享 &amp; 发布文档</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E4%BA%AB%E5%9C%A8%E7%BA%BF%E6%96%87%E6%A1%A3"><span class="toc-number">1.5.7.1.</span> <span class="toc-text">分享在线文档</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%9C%A8%E7%BA%BF%E6%96%87%E6%A1%A3"><span class="toc-number">1.5.7.2.</span> <span class="toc-text">查看在线文档</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E7%BA%BF%E6%96%87%E6%A1%A3%E6%94%AF%E6%8C%81%E4%BF%AE%E6%94%B9%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">1.5.7.3.</span> <span class="toc-text">在线文档支持修改环境变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E7%BA%BF%E6%96%87%E6%A1%A3%E6%94%AF%E6%8C%81%E6%98%BE%E7%A4%BA%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="toc-number">1.5.7.4.</span> <span class="toc-text">在线文档支持显示示例代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="toc-number">1.6.</span> <span class="toc-text">参考文档</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background: rgba(255, 255, 255, .0)"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 槐序拾肆</div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener external nofollow noreferrer" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
