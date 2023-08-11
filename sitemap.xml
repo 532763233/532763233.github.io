@@ -124,6 +124,27 @@
   </url>
   
   <url>
+    <loc>https://532763233.github.io/tags/BUG/</loc>
+    <lastmod>2023-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://532763233.github.io/tags/nginx/</loc>
+    <lastmod>2023-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://532763233.github.io/tags/%E8%BF%90%E7%BB%B4/</loc>
+    <lastmod>2023-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://532763233.github.io/tags/Java/</loc>
     <lastmod>2023-08-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -145,21 +166,7 @@
   </url>
   
   <url>
-    <loc>https://532763233.github.io/tags/BUG/</loc>
-    <lastmod>2023-08-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://532763233.github.io/tags/nginx/</loc>
-    <lastmod>2023-08-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://532763233.github.io/tags/%E8%BF%90%E7%BB%B4/</loc>
+    <loc>https://532763233.github.io/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/</loc>
     <lastmod>2023-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -200,13 +207,6 @@
     <priority>0.2</priority>
   </url>
   
-  <url>
-    <loc>https://532763233.github.io/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/</loc>
-    <lastmod>2023-08-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
 
   
   <url>
@@ -217,7 +217,7 @@
   </url>
   
   <url>
-    <loc>https://532763233.github.io/categories/Java/</loc>
+    <loc>https://532763233.github.io/categories/BUG/</loc>
     <lastmod>2023-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -231,14 +231,14 @@
   </url>
   
   <url>
-    <loc>https://532763233.github.io/categories/Java/Java%E5%9F%BA%E7%A1%80/</loc>
+    <loc>https://532763233.github.io/categories/BUG/nginx/</loc>
     <lastmod>2023-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://532763233.github.io/categories/BUG/</loc>
+    <loc>https://532763233.github.io/categories/Java/</loc>
     <lastmod>2023-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -259,14 +259,14 @@
   </url>
   
   <url>
-    <loc>https://532763233.github.io/categories/Java/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/</loc>
+    <loc>https://532763233.github.io/categories/Java/Java%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2023-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://532763233.github.io/categories/BUG/nginx/</loc>
+    <loc>https://532763233.github.io/categories/Java/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/</loc>
     <lastmod>2023-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
