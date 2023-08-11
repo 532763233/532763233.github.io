@@ -119,13 +119,6 @@
 
   
   <url>
-    <loc>https://532763233.github.io/tags/WebStorm/</loc>
-    <lastmod>2023-08-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://532763233.github.io/tags/BUG/</loc>
     <lastmod>2023-08-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -168,14 +161,7 @@
   </url>
   
   <url>
-    <loc>https://532763233.github.io/tags/Apifox/</loc>
-    <lastmod>2023-08-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://532763233.github.io/tags/IDEA-Plugin/</loc>
+    <loc>https://532763233.github.io/tags/WebStorm/</loc>
     <lastmod>2023-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -204,6 +190,20 @@
   
   <url>
     <loc>https://532763233.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
+    <lastmod>2023-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://532763233.github.io/tags/Apifox/</loc>
+    <lastmod>2023-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://532763233.github.io/tags/IDEA-Plugin/</loc>
     <lastmod>2023-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -240,13 +240,6 @@
 
   
   <url>
-    <loc>https://532763233.github.io/categories/Tools/</loc>
-    <lastmod>2023-08-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://532763233.github.io/categories/BUG/</loc>
     <lastmod>2023-08-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -254,14 +247,7 @@
   </url>
   
   <url>
-    <loc>https://532763233.github.io/categories/Tools/Apifox/</loc>
-    <lastmod>2023-08-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://532763233.github.io/categories/Tools/WebStorm/</loc>
+    <loc>https://532763233.github.io/categories/Tools/</loc>
     <lastmod>2023-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -269,6 +255,13 @@
   
   <url>
     <loc>https://532763233.github.io/categories/BUG/json/</loc>
+    <lastmod>2023-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://532763233.github.io/categories/Tools/WebStorm/</loc>
     <lastmod>2023-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -283,6 +276,13 @@
   
   <url>
     <loc>https://532763233.github.io/categories/Java/</loc>
+    <lastmod>2023-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://532763233.github.io/categories/Tools/Apifox/</loc>
     <lastmod>2023-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
