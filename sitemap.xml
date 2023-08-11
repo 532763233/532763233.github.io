@@ -110,7 +110,14 @@
 
   
   <url>
-    <loc>https://532763233.github.io/tags/WebStorm/</loc>
+    <loc>https://532763233.github.io/tags/Apifox/</loc>
+    <lastmod>2023-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://532763233.github.io/tags/IDEA-Plugin/</loc>
     <lastmod>2023-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -118,6 +125,13 @@
   
   <url>
     <loc>https://532763233.github.io/tags/WebStorm-Plugin/</loc>
+    <lastmod>2023-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://532763233.github.io/tags/WebStorm/</loc>
     <lastmod>2023-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -193,20 +207,6 @@
     <priority>0.2</priority>
   </url>
   
-  <url>
-    <loc>https://532763233.github.io/tags/Apifox/</loc>
-    <lastmod>2023-08-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://532763233.github.io/tags/IDEA-Plugin/</loc>
-    <lastmod>2023-08-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
 
   
   <url>
@@ -231,6 +231,13 @@
   </url>
   
   <url>
+    <loc>https://532763233.github.io/categories/Tools/Apifox/</loc>
+    <lastmod>2023-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://532763233.github.io/categories/BUG/nginx/</loc>
     <lastmod>2023-08-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -246,13 +253,6 @@
   
   <url>
     <loc>https://532763233.github.io/categories/Tools/AList/</loc>
-    <lastmod>2023-08-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://532763233.github.io/categories/Tools/Apifox/</loc>
     <lastmod>2023-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
