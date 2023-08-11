@@ -4,6 +4,68 @@
   
     
     <entry>
+      <title>nginx转发headers内容丢失解决办法</title>
+      <link href="/archives/f909246b.html"/>
+      <url>/archives/f909246b.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="nginx转发headers内容丢失解决办法"><a href="#nginx转发headers内容丢失解决办法" class="headerlink" title="nginx转发headers内容丢失解决办法"></a>nginx转发headers内容丢失解决办法</h1><h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><p>部署项目时，在请求时往请求头header中放入了token信息，在接收请求时再从header中拿出，在本地调试时是可以的，但部署上线通过<a href="https://so.csdn.net/so/search?q=Nginx%E4%BB%A3%E7%90%86&spm=1001.2101.3001.7020">Nginx代理</a>之后发现拿不到。</p><h2 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h2><p>nginx代理默认会把header中参数的 “ _ “ 下划线去掉，所以后台服务器后就获取不到带 “ _ “ 线的参数名。需要在http配置里添加这个参数配置为on。</p><blockquote><p>underscores_in_headers on; <em>#该属性默认为off，表示如果header name中包含下划线，则忽略掉。</em></p></blockquote><h2 id="扩展："><a href="#扩展：" class="headerlink" title="扩展："></a>扩展：</h2><p>另外，如果只需要保留请求头中的某些特定下划线参数，可以在Nginx配置文件中添加以下语句：</p><blockquote><p>ignore_invalid_headers off;</p></blockquote><p>然后在server或location段中，使用proxy_set_header指令来设置需要保留的请求头参数。例如：</p><blockquote><p>location &#x2F; {<br>    proxy_pass <a href="http://backend/">http://backend</a>;<br>    proxy_set_header X-MyHeader $http_x_my_header;<br>}</p></blockquote><p>以上示例中，Nginx会保留名为 “X-MyHeader” 的请求头参数，并将它的值设置为原请求头中名为 “x_my_header” 的参数的值。 </p><p>完整代码配置：</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">http</span> &#123;</span><br><span class="line">    <span class="comment"># 全局配置</span></span><br><span class="line">    <span class="string">underscores_in_headers</span> <span class="string">on;</span></span><br><span class="line">    <span class="string">server</span> &#123;</span><br><span class="line">        <span class="string">listen</span> <span class="number">80</span><span class="string">;</span></span><br><span class="line">        <span class="string">server_name</span> <span class="string">example.com;</span></span><br><span class="line"></span><br><span class="line">        <span class="string">location</span> <span class="string">/</span> &#123;</span><br><span class="line">            <span class="string">proxy_pass</span> <span class="string">http://backend;</span></span><br><span class="line">            <span class="comment"># 保留名为 X-MyHeader 的请求头参数</span></span><br><span class="line">            <span class="string">proxy_set_header</span> <span class="string">X-MyHeader</span> <span class="string">$http_x_my_header;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>以上示例中，underscores_in_headers 指令被配置在 http 块中，保证了全局的下划线参数保留。而 proxy_set_header 指令则被配置在 location 块中，保留了名为 X-MyHeader 的请求头参数。</p><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://blog.csdn.net/m0_37609579/article/details/129118700">nginx转发headers内容丢失解决办法_nginx转发header丢失_十步杀一人_千里不留行的博客-CSDN博客</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> BUG </category>
+          
+          <category> nginx </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> BUG </tag>
+            
+            <tag> nginx </tag>
+            
+            <tag> 运维 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>超级好用的网盘聚合工具——AList的安装搭建与使用</title>
+      <link href="/archives/d66ec0d5.html"/>
+      <url>/archives/d66ec0d5.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="AList安装搭建使用教程"><a href="#AList安装搭建使用教程" class="headerlink" title="AList安装搭建使用教程"></a>AList安装搭建使用教程</h1><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>AList是一款免费开源的项目程序，一个支持多种存储，支持网页浏览和 WebDAV 的文件列表程序，由 gin 和 Solidjs 驱动。简单的来说就是能够帮助你管理各种网盘应用，类似于CloudDrive，AList除了支持网盘存储之外，还支持对象存储，本地存储，FTP等等。如果你经常使用网盘等存储服务，相信它能帮助你提高不少效率。可以将主流的各大网盘直接挂载到我们本地电脑或者是服务器上面，也可以搭配IDM下载神器进行使用，下载网盘里的东西简直不要太爽，也可以再本地电脑里面直接观看网盘里面的视频或者是电影。</p><h2 id="安装AList"><a href="#安装AList" class="headerlink" title="安装AList"></a>安装AList</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>文档地址：<a href="https://alist.nn.ci/zh/">https://alist.nn.ci/zh/</a></p><p>官网下载地址：<a href="https://github.com/alist-org/alist/releases">https://github.com/alist-org/alist/releases</a></p><p>整理的文件：<a href="https://pan.quark.cn/s/9fd2633e8e69">https://pan.quark.cn/s/9fd2633e8e69 </a></p><p>根据自己对应的系统和类型选择相应的选项进行下载，我是Windows系统amd的CPU所以选择了这个下载链接。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Tools </category>
+          
+          <category> AList </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> AList </tag>
+            
+            <tag> 网盘 </tag>
+            
+            <tag> Tools </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>什么是魔法值和解决方法</title>
       <link href="/archives/89e4adb2.html"/>
       <url>/archives/89e4adb2.html</url>
@@ -82,9 +144,9 @@
       
         <tags>
             
-            <tag> WebStorm </tag>
-            
             <tag> WebStorm Plugin </tag>
+            
+            <tag> WebStorm </tag>
             
         </tags>
       
