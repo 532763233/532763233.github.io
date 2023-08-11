@@ -110,14 +110,7 @@
 
   
   <url>
-    <loc>https://532763233.github.io/tags/Apifox/</loc>
-    <lastmod>2023-08-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://532763233.github.io/tags/IDEA-Plugin/</loc>
+    <loc>https://532763233.github.io/tags/WebStorm-Plugin/</loc>
     <lastmod>2023-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -131,49 +124,14 @@
   </url>
   
   <url>
-    <loc>https://532763233.github.io/tags/Java/</loc>
+    <loc>https://532763233.github.io/tags/Apifox/</loc>
     <lastmod>2023-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://532763233.github.io/tags/List/</loc>
-    <lastmod>2023-08-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://532763233.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
-    <lastmod>2023-08-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://532763233.github.io/tags/AList/</loc>
-    <lastmod>2023-08-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://532763233.github.io/tags/%E7%BD%91%E7%9B%98/</loc>
-    <lastmod>2023-08-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://532763233.github.io/tags/Tools/</loc>
-    <lastmod>2023-08-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://532763233.github.io/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/</loc>
+    <loc>https://532763233.github.io/tags/IDEA-Plugin/</loc>
     <lastmod>2023-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -201,7 +159,49 @@
   </url>
   
   <url>
-    <loc>https://532763233.github.io/tags/WebStorm-Plugin/</loc>
+    <loc>https://532763233.github.io/tags/Java/</loc>
+    <lastmod>2023-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://532763233.github.io/tags/List/</loc>
+    <lastmod>2023-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://532763233.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
+    <lastmod>2023-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://532763233.github.io/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/</loc>
+    <lastmod>2023-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://532763233.github.io/tags/AList/</loc>
+    <lastmod>2023-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://532763233.github.io/tags/%E7%BD%91%E7%9B%98/</loc>
+    <lastmod>2023-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://532763233.github.io/tags/Tools/</loc>
     <lastmod>2023-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -211,27 +211,6 @@
   
   <url>
     <loc>https://532763233.github.io/categories/Tools/</loc>
-    <lastmod>2023-08-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://532763233.github.io/categories/Java/</loc>
-    <lastmod>2023-08-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://532763233.github.io/categories/Tools/AList/</loc>
-    <lastmod>2023-08-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://532763233.github.io/categories/Tools/Apifox/</loc>
     <lastmod>2023-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -252,6 +231,27 @@
   </url>
   
   <url>
+    <loc>https://532763233.github.io/categories/Java/</loc>
+    <lastmod>2023-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://532763233.github.io/categories/Tools/Apifox/</loc>
+    <lastmod>2023-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://532763233.github.io/categories/BUG/nginx/</loc>
+    <lastmod>2023-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://532763233.github.io/categories/Java/Java%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2023-08-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -266,7 +266,7 @@
   </url>
   
   <url>
-    <loc>https://532763233.github.io/categories/BUG/nginx/</loc>
+    <loc>https://532763233.github.io/categories/Tools/AList/</loc>
     <lastmod>2023-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
