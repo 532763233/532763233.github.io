@@ -4,6 +4,41 @@
   
     
     <entry>
+      <title>RequestBody部分属性为null的问题</title>
+      <link href="/archives/c7e51f17.html"/>
+      <url>/archives/c7e51f17.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="RequestBody部分属性为null的问题"><a href="#RequestBody部分属性为null的问题" class="headerlink" title="RequestBody部分属性为null的问题"></a>RequestBody部分属性为null的问题</h1><p><em>Spring Boot项目中使用@RequestBody接收请求数据，前端通过json格式传递数据，发现获取不到所发送的部分数据</em></p><ul><li><h3 id="实体类"><a href="#实体类" class="headerlink" title="实体类"></a>实体类</h3></li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ApiModel(value = &quot;码表分类&quot;)</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ClassVo</span> &#123;</span><br><span class="line">    <span class="meta">@ApiModelProperty(value = &quot;码表分类编号&quot;, required = true)</span></span><br><span class="line">    <span class="keyword">private</span> String cId;</span><br><span class="line">    <span class="meta">@ApiModelProperty(value = &quot;码表分类名&quot;, required = true)</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="meta">@ApiModelProperty(value = &quot;备注&quot;, required = false)</span></span><br><span class="line">    <span class="keyword">private</span> String memo;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li><h3 id="响应方法"><a href="#响应方法" class="headerlink" title="响应方法"></a>响应方法</h3>获得请求数据，以json格式再返回’</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostMapping(value = &quot;/class&quot;)</span></span><br><span class="line"><span class="keyword">public</span> CommonreturnType <span class="title function_">insertClass</span><span class="params">(<span class="meta">@RequestBody</span> ClassVo classVo)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> CommonreturnType.create(classVo);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li><h3 id="请求数据"><a href="#请求数据" class="headerlink" title="请求数据"></a>请求数据</h3></li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;cId&quot;</span>: <span class="string">&quot;01&quot;</span>,</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;测试&quot;</span>,</span><br><span class="line">    <span class="string">&quot;memo&quot;</span>: <span class="string">&quot;测试&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li><h3 id="返回结果"><a href="#返回结果" class="headerlink" title="返回结果"></a>返回结果</h3></li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;status&quot;</span>: <span class="string">&quot;success&quot;</span>,</span><br><span class="line">    <span class="string">&quot;data&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;cId&quot;</span>: <span class="literal">null</span>,</span><br><span class="line">        <span class="string">&quot;name&quot;</span>: <span class="string">&quot;测试&quot;</span>,</span><br><span class="line">   <span class="string">&quot;memo&quot;</span>: <span class="string">&quot;测试&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>很惊奇的发现，传入的参数cId并没有被解析到实体类中，返回结果中为<code>null</code></p><ul><li><h3 id="多次测试后发现："><a href="#多次测试后发现：" class="headerlink" title="多次测试后发现："></a>多次测试后发现：</h3></li></ul><p>如果参数第一个字母为小写，第二个字母为大写，就不能正常的从JSON中解析出来，如：<code>cId，mName，aBcd</code>等参数都不能被正常的解析，而<code>myName，abCd</code>等最前面不止一个字母小写的情况是可以用的</p><ul><li><h3 id="结论："><a href="#结论：" class="headerlink" title="结论："></a>结论：</h3></li></ul><p>@RequestBody接收的实体类中的属性名如果是第一个字母小写第二个字母大写的情况，不能正常的从JSON转换成实例类属性</p><ul><li><h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ul><li>方案一：改名字，第二个大写的改成小写就行了（实际开发中改名字使名字不符合驼峰命名法不恰当）</li><li>方案二：加上@JsonProperty注解，指定某个方法JSON转换时的名字，上述实体类将修改为</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ApiModel(value = &quot;码表分类&quot;)</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ClassVo</span> &#123;</span><br><span class="line">    <span class="meta">@ApiModelProperty(value = &quot;码表分类编号&quot;, required = true)</span></span><br><span class="line">    <span class="keyword">private</span> String cId;</span><br><span class="line">    <span class="meta">@ApiModelProperty(value = &quot;码表分类名&quot;, required = true)</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="meta">@ApiModelProperty(value = &quot;备注&quot;, required = false)</span></span><br><span class="line">    <span class="keyword">private</span> String memo;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@JsonProperty(value = &quot;cId&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getcId</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> cId;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@JsonProperty(value = &quot;cId&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setcId</span><span class="params">(String cId)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.cId = cId;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>因为使用的lambok的@Data注解没有显式的setter和getter，所以自己写一个setter和getter，然后在上面注明解析时的名字就可以了</p></li></ul><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://blog.csdn.net/qq_41170102/article/details/105905761">@RequestBody部分属性为null的问题_@requestbody 参数为null_clonechen2021的博客-CSDN博客</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> BUG </category>
+          
+          <category> json </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> BUG </tag>
+            
+            <tag> SpringBoot </tag>
+            
+            <tag> Java </tag>
+            
+            <tag> json </tag>
+            
+            <tag> spring </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>nginx转发headers内容丢失解决办法</title>
       <link href="/archives/f909246b.html"/>
       <url>/archives/f909246b.html</url>
@@ -144,9 +179,9 @@
       
         <tags>
             
-            <tag> WebStorm Plugin </tag>
-            
             <tag> WebStorm </tag>
+            
+            <tag> WebStorm Plugin </tag>
             
         </tags>
       
